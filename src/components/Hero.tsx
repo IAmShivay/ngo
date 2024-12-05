@@ -9,7 +9,7 @@ export default function Hero() {
           A non-political organization{" "}
         </h1>
         <p className="text-xl md:text-2xl mb-8">
-          ৬৩তম মৃত্যুবার্ষিকী উপলক্ষে আয়োজিত অনুষ্ঠান
+          অখণ্ড ভারত SC/ST/OBC যৌথ মঞ্চ{" "}
         </p>
         <div className="flex items-center justify-center space-x-2 text-yellow-400">
           <Calendar className="w-6 h-6" />

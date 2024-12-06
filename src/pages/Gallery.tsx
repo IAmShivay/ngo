@@ -13,44 +13,44 @@ const galleryImages: GalleryImage[] = [
   {
     id: 1,
     url: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    title: "বার্ষিক সম্মেলন ২০২৩",
-    description: "সদস্যদের সাথে আলোচনা সভা",
-    date: "১৫ ডিসেম্বর, ২০২৩"
+    title: "Annual Conference 2023",
+    description: "Discussion Meeting with Members",
+    date: "December 15, 2023"
   },
   {
     id: 2,
     url: "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    title: "শিক্ষা সহায়তা কর্মসূচি",
-    description: "ছাত্রছাত্রীদের মাঝে শিক্ষা উপকরণ বিতরণ",
-    date: "২০ নভেম্বর, ২০২৩"
+    title: "Education Support Program",
+    description: "Distribution of Educational Materials to Students",
+    date: "November 20, 2023"
   },
   {
     id: 3,
     url: "https://images.unsplash.com/photo-1526976668912-1a811878dd37?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    title: "সামাজিক সচেতনতা কর্মশালা",
-    description: "যুব সমাজের সাথে মতবিনিময়",
-    date: "৫ অক্টোবর, ২০২৩"
+    title: "Social Awareness Workshop",
+    description: "Interaction with Youth Society",
+    date: "October 5, 2023"
   },
   {
     id: 4,
     url: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    title: "সাংস্কৃতিক অনুষ্ঠান",
-    description: "ঐতিহ্যবাহী সাংস্কৃতিক পরিবেশনা",
-    date: "২৫ সেপ্টেম্বর, ২০২৩"
+    title: "Cultural Event",
+    description: "Traditional Cultural Performance",
+    date: "September 25, 2023"
   },
   {
     id: 5,
     url: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    title: "স্বাস্থ্য শিবির",
-    description: "বিনামূল্যে স্বাস্থ্য পরীক্ষা ক্যাম্প",
-    date: "১০ আগস্ট, ২০২৩"
+    title: "Health Camp",
+    description: "Free Health Checkup Camp",
+    date: "August 10, 2023"
   },
   {
     id: 6,
     url: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    title: "বৃক্ষরোপণ কর্মসূচি",
-    description: "পরিবেশ সচেতনতা কর্মসূচি",
-    date: "৫ জুন, ২০২৩"
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023"
   }
 ];
 
@@ -62,7 +62,7 @@ export default function Gallery() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-center mb-12">
           <Camera className="w-8 h-8 text-blue-600 mr-3" />
-          <h1 className="text-4xl font-bold text-center">আমাদের স্মৃতিময় মুহূর্ত</h1>
+          <h1 className="text-4xl font-bold text-center">Our Memorable Moments</h1>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

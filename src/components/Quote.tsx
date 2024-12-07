@@ -11,8 +11,8 @@ export default function Quote() {
             পরিবর্তন হচ্ছে প্রকৃতির নিয়ম
             <span className="absolute -right-4 bottom-0 text-blue-400 opacity-50 text-6xl">"</span>
           </blockquote>
-          <div className="text-xl font-semibold">Dr. B.R. Ambedkar</div>
-          <div className="text-blue-300 mt-2">Father of the Indian Constitution</div>
+          {/* <div className="text-xl font-semibold">Dr. B.R. Ambedkar</div>
+          <div className="text-blue-300 mt-2">Father of the Indian Constitution</div> */}
         </div>
       </div>
     </section>

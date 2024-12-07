@@ -51,7 +51,7 @@ export default function Founders() {
         <h2 className="text-4xl font-bold text-center mb-12">Founding Members</h2>
         <div className="space-y-8">
           <FounderCard
-            name="Pinki Paul Mondal"
+            name="পিংকি পল মন্ডল"
             title="Chairperson"
             qualifications="B.TECH / MBA / IIM NAGPUR/LLB"
             contact="8811048111"
@@ -60,7 +60,7 @@ export default function Founders() {
             imageUrl="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
           />
           <FounderCard
-            name="Rahul Bauri"
+            name="রাহুল বাউরি"
             title="Honorary President"
             qualifications="Highly Educated Social Worker"
             contact="9832808213"

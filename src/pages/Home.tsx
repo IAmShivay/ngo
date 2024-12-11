@@ -5,13 +5,17 @@ import Committee from '../components/Committee';
 import MissionVision from '../components/MissionVision';
 import UpcomingEvents from '../components/UpcomingEvents';
 import Gallery from './Gallery';
+import SliderPage from '../components/SliderComponents';
+import WhatWeDoSection from '../components/WhatWeDo';
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <SliderPage/>
+      <WhatWeDoSection/>
       <Quote />
-      <Founders />
+      {/* <Founders /> */}
       <MissionVision />
       <UpcomingEvents />
       {/* <Committee /> */}
@@ -19,3 +23,4 @@ export default function Home() {
     </>
   );
 }
+

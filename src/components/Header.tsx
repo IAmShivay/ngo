@@ -17,22 +17,22 @@ export default function Header() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="bg-gradient-to-r from-blue-900 to-indigo-800 text-white sticky top-0 z-50 shadow-lg">
+    <header className="bg-white text-black sticky top-0 z-50 shadow-lg">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link
             to="/"
-            className="text-lg md:text-xl font-bold hover:text-yellow-300 transition-colors flex items-center space-x-2"
+            className="text-lg md:text-xl font-bold hover:text-gray-700 transition-colors flex items-center space-x-2"
           >
             <span>AKHAND BHARAT SC/ST/OBC/ MINORITY JOINT FORUM</span>
           </Link>
 
           <button
-            className="lg:hidden p-2 rounded-md hover:bg-blue-800 transition-colors"
+            className="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle Menu"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-6 h-6 text-black" />
           </button>
 
           <div className="hidden lg:flex space-x-6">
@@ -42,13 +42,13 @@ export default function Header() {
                 to={path}
                 className={`${
                   isActive(path)
-                    ? "text-yellow-300 font-semibold"
-                    : "text-white/80 hover:text-yellow-300"
+                    ? "text-black font-semibold"
+                    : "text-black/70 hover:text-black"
                 } transition-colors relative group`}
               >
                 {label}
                 <span
-                  className={`absolute bottom-0 left-0 w-full h-0.5 bg-yellow-300 transform scale-x-0 group-hover:scale-x-100 transition-transform ${
+                  className={`absolute bottom-0 left-0 w-full h-0.5 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform ${
                     isActive(path) ? "scale-x-100" : ""
                   }`}
                 ></span>
@@ -58,15 +58,15 @@ export default function Header() {
         </div>
 
         {isMenuOpen && (
-          <div className="lg:hidden mt-4 space-y-3 bg-blue-900 rounded-lg p-4 shadow-xl">
+          <div className="lg:hidden mt-4 space-y-3 bg-gray-100 rounded-lg p-4 shadow-xl">
             {navLinks.map(({ path, label }) => (
               <Link
                 key={path}
                 to={path}
                 className={`block py-2 px-3 rounded-md ${
                   isActive(path)
-                    ? "bg-yellow-300 text-blue-900 font-semibold"
-                    : "hover:bg-blue-800 hover:text-yellow-300"
+                    ? "bg-black text-white font-semibold"
+                    : "hover:bg-gray-200 text-black"
                 } transition-colors`}
                 onClick={() => setIsMenuOpen(false)}
               >

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Heart } from "lucide-react";
-
+import image1 from "../assets/1.jpg";
+import image2 from "../assets/2.jpg";
+import image3 from "../assets/3.jpg";
+import image4 from "../assets/4.jpg";
 // Slide interface
 interface Slide {
   id: number;
@@ -102,31 +105,27 @@ const SliderPage: React.FC = () => {
       title: "Innovative Technology",
       description:
         "Exploring cutting-edge solutions that transform technology.",
-      image:
-        "https://www.cry.org/wp-content/themes/cry/images/children-wide-banner.jpg",
+      image: image1,
     },
     {
       id: 2,
       title: "Digital Transformation",
       description:
         "Empowering businesses to adapt and thrive in the digital age.",
-      image:
-        "https://www.cry.org/wp-content/themes/cry/images/children-wide-banner.jpg",
+      image: image2,
     },
     {
       id: 3,
       title: "User Experience Design",
       description: "Creating intuitive and engaging digital experiences.",
-      image:
-        "https://www.cry.org/wp-content/themes/cry/images/children-wide-banner.jpg",
+      image: image3,
     },
     {
       id: 4,
       title: "Cloud Solutions",
       description:
         "Scalable and secure cloud infrastructure for modern businesses.",
-      image:
-        "https://www.cry.org/wp-content/themes/cry/images/children-wide-banner.jpg",
+      image: image4,
     },
   ];
 

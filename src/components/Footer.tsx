@@ -128,7 +128,7 @@ export default function Footer() {
         
         {/* Footer Bottom */}
         <div className="border-t border-gray-700 pt-8 text-center">
-          <p className="text-lg">© 2024 All India SC/ST/OBC Minority Joint Platform</p>
+          <p className="text-lg">© 2024 All India SC/ST/OBC Minority Joint Forum</p>
           <p className="text-sm text-gray-500 mt-2">All Rights Reserved</p>
         </div>
       </div>

@@ -61,7 +61,7 @@ export default function Gallery() {
     <div className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-center mb-12">
-          <Camera className="w-8 h-8 text-blue-600 mr-3" />
+          <Camera className="w-8 h-8 text-black mr-3" />
           <h1 className="text-4xl font-bold text-center">Our Works</h1>
         </div>
 

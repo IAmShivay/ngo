@@ -14,12 +14,12 @@ export default function Home() {
       <Hero />
       <SliderPage/>
       <WhatWeDoSection/>
-      <Quote />
       {/* <Founders /> */}
       <MissionVision />
       <UpcomingEvents />
       {/* <Committee /> */}
       <Gallery/>
+      <Quote />
     </>
   );
 }

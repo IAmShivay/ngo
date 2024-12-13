@@ -63,6 +63,7 @@ const ContentSlider: React.FC<ContentSliderProps> = ({
         <div className="w-full flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-6">
           {/* Mobile: Single Slide */}
           <div className="md:hidden w-full flex flex-col items-center rounded-lg py-4">
+            <h1 className="text-2xl font-bold text-center mb-4">OUR MISSION</h1>
             <div className="w-full mb-4">
               <img
                 src={slides[currentSlide].image}
@@ -84,7 +85,7 @@ const ContentSlider: React.FC<ContentSliderProps> = ({
           <div className="hidden md:flex w-full space-x-4">
             {[
               slides[currentSlide],
-              slides[(currentSlide + 1) % slides.length]
+              slides[(currentSlide + 1) % slides.length],
             ].map((slide) => (
               <div
                 key={slide.id}
@@ -97,7 +98,7 @@ const ContentSlider: React.FC<ContentSliderProps> = ({
                     className="w-full h-48 md:h-64 object-cover rounded-lg"
                   />
                 </div>
-                <div className="text-center bg-inherit border-b border-black py-5">
+                <div className="text-center bg-inherit py-5">
                   <h3 className="text-base md:text-xl font-semibold text-gray-800 mb-1 px-4">
                     {slide.title}
                   </h3>
@@ -120,29 +121,34 @@ const SliderPage: React.FC = () => {
   const dynamicSlides: Slide[] = [
     {
       id: 1,
-      title: "Innovative Technology",
+      title: "Right to Free Legal Aid",
       description:
-        "Exploring cutting-edge solutions that transform technology.",
+        "Free legal aid advocates in entire West Bengal & Jharkhand for SC/ST/OBC/Minority " +
+        "সমগ্র পশ্চিমবঙ্গ ও ঝাড়খণ্ডে আইনি সহায়তার উকিল বিনামূল্যে ।",
       image: image1,
     },
     {
       id: 2,
-      title: "Digital Transformation",
+      title: "Free Doctor Checkup",
       description:
-        "Empowering businesses to adapt and thrive in the digital age.",
+        "Tottaly Free Doctor checkup in specified hospital for SC/ST/OBC Minority " +
+        "SC/ST/OBC/Minority দের ক্ষেত্রে ডাক্তার চেক-আপ সম্পূর্ণ বিনামূল্যে নির্ধারিত হাসপাতালে ।",
       image: image2,
     },
     {
       id: 3,
-      title: "User Experience Design",
-      description: "Creating intuitive and engaging digital experiences.",
+      title: "Engineering Seats Free",
+      description:
+        "100 Engineering seats free for SC/ST/OBC Minority students ( West Bengal / Jharkhand) " +
+        " SC/ST/OBC Minority দের ১০০ টা ইঞ্জিনিয়ারিং সিট ফ্রি (পশ্চিমবঙ্গ/ ঝাড়খণ্ড)",
       image: image3,
     },
     {
       id: 4,
-      title: "Cloud Solutions",
+      title: "Scholarship Given",
       description:
-        "Scalable and secure cloud infrastructure for modern businesses.",
+        "1 lakh scholarship will be given to meritorious  girls students in various fields for SC/ST/OBC/Minority students. " +
+        " (SC/ST/OBC/Minority দের বছরে ১০০০০০ টাকা স্কলারশিপ বিভিন্ন শিক্ষা ক্ষেত্রে মেধাবী ছাত্রীদের দেওয়া হবে ।)",
       image: image4,
     },
   ];
@@ -151,19 +157,23 @@ const SliderPage: React.FC = () => {
   const staticContent = (
     <div className="space-y-4 md:space-y-6">
       <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
-        How do you want to help children today?{" "}
+        How do we want to help SC/ST/OBC Minority People?{" "}
       </h2>
       <h2 className="text-xl md:text-xl font-bold text-gray-800">
-        ( আজকে আপনি কীভাবে একটি শিশুকে সাহায্য করবেন ? )
+        ( আমরা কিভাবে SC/ST/OBC সংখ্যালঘুদের সাহায্য করতে চাই ? )
       </h2>
       <p className="text-gray-600 text-base md:text-lg">
-        আপনার ক্ষুদ্রতম অবদান শিশুদের জীবনে বড় পরিবর্তন আনে। আমরা ভারতের
-        শিশুদের জন্য সত্যিকারের পরিবর্তন আনতে সক্ষম হওয়ার জন্য আপনার মতো
-        লোকেদের উদারতার উপর নির্ভর করি!
+        There are many facilities in the constitution for these SC/ST/OBC people
+        but they are not getting it properly. The power that these people have
+        in the constitution is their right and our organization will do our best
+        to get it to them. <br />
+        (এই মানুষগুলোর জন্য সংবিধানে অনেক সুযোগ সুবিধা আছে কিন্তু তারা সেটা সঠিক
+        ভাবে পাচ্ছে না । এই মানুষগুলো সংবিধানে যে ক্ষমতা রাখে সেটা তাদের অধিকার
+        এবং আমাদের সংস্থা সেটা তাদের পাইয়ে দেওয়ার সম্পূর্ন চেষ্টা করবে।)
       </p>
-      <button className="flex items-center bg-black text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-yellow-300 transition-colors">
+      {/* <button className="flex items-center bg-black text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-yellow-300 transition-colors">
         <Heart className="mr-2" /> Donate For Happier Childwhood
-      </button>
+      </button> */}
     </div>
   );
 

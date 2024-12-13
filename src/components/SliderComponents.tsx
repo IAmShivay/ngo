@@ -5,6 +5,7 @@ import image1 from "../assets/1.jpg";
 import image2 from "../assets/2.jpg";
 import image3 from "../assets/3.jpg";
 import image4 from "../assets/4.jpg";
+
 // Slide interface
 interface Slide {
   id: number;
@@ -26,20 +27,15 @@ const ContentSlider: React.FC<ContentSliderProps> = ({
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handlePrevious = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 2 : prev - 1));
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
-    setCurrentSlide((prev) => (prev >= slides.length - 2 ? 0 : prev + 1));
+    setCurrentSlide((prev) => (prev >= slides.length - 1 ? 0 : prev + 1));
   };
 
-  const displaySlides = [
-    slides[currentSlide],
-    slides[(currentSlide + 1) % slides.length],
-  ];
-
   return (
-    <div className="flex flex-col md:flex-row w-full min-h-[500px] bg-inherit  rounded-lg overflow-hidden">
+    <div className="flex flex-col md:flex-row w-full min-h-[500px] bg-inherit rounded-lg overflow-hidden">
       {/* Left Static Content Section */}
       <div className="w-full md:w-1/2 p-6 md:p-8 bg-gray-50 flex flex-col justify-center">
         {staticContent}
@@ -64,32 +60,54 @@ const ContentSlider: React.FC<ContentSliderProps> = ({
         </div>
 
         {/* Slide Container */}
-        <div className="w-full flex space-x-4 mb-6">
-          {displaySlides.map((slide) => (
-            <div
-              key={slide.id}
-              className="w-1/2 flex flex-col items-center rounded-lg py-4"
-            >
-              {/* Slide Image */}
-              <div className="w-full mb-4">
-                <img
-                  src={slide.image}
-                  alt={slide.title}
-                  className="w-full h-48 md:h-64 object-cover rounded-lg"
-                />
-              </div>
-
-              {/* Slide Information */}
-              <div className="text-center bg-inherit border-b border-black py-5">
-                <h3 className="text-base md:text-xl font-semibold text-gray-800 mb-1 px-4">
-                  {slide.title}
-                </h3>
-                <p className="text-xs md:text-sm text-gray-600 px-4">
-                  {slide.description}
-                </p>
-              </div>
+        <div className="w-full flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-6">
+          {/* Mobile: Single Slide */}
+          <div className="md:hidden w-full flex flex-col items-center rounded-lg py-4">
+            <div className="w-full mb-4">
+              <img
+                src={slides[currentSlide].image}
+                alt={slides[currentSlide].title}
+                className="w-full h-48 md:h-64 object-cover rounded-lg"
+              />
             </div>
-          ))}
+            <div className="text-center bg-inherit border-b border-black py-5">
+              <h3 className="text-base md:text-xl font-semibold text-gray-800 mb-1 px-4">
+                {slides[currentSlide].title}
+              </h3>
+              <p className="text-xs md:text-sm text-gray-600 px-4">
+                {slides[currentSlide].description}
+              </p>
+            </div>
+          </div>
+
+          {/* Desktop: Two Slides */}
+          <div className="hidden md:flex w-full space-x-4">
+            {[
+              slides[currentSlide],
+              slides[(currentSlide + 1) % slides.length]
+            ].map((slide) => (
+              <div
+                key={slide.id}
+                className="w-1/2 flex flex-col items-center rounded-lg py-4"
+              >
+                <div className="w-full mb-4">
+                  <img
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-full h-48 md:h-64 object-cover rounded-lg"
+                  />
+                </div>
+                <div className="text-center bg-inherit border-b border-black py-5">
+                  <h3 className="text-base md:text-xl font-semibold text-gray-800 mb-1 px-4">
+                    {slide.title}
+                  </h3>
+                  <p className="text-xs md:text-sm text-gray-600 px-4">
+                    {slide.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -136,32 +154,14 @@ const SliderPage: React.FC = () => {
         How do you want to help children today?{" "}
       </h2>
       <h2 className="text-xl md:text-xl font-bold text-gray-800">
-        ( আজকে আপনি কীভাবে একটি শিশুকে সাহায্য করবেন ? )
+        ( আজকে আপনি কীভাবে একটি শিশুকে সাহায্য করবেন ? )
       </h2>
       <p className="text-gray-600 text-base md:text-lg">
         আপনার ক্ষুদ্রতম অবদান শিশুদের জীবনে বড় পরিবর্তন আনে। আমরা ভারতের
         শিশুদের জন্য সত্যিকারের পরিবর্তন আনতে সক্ষম হওয়ার জন্য আপনার মতো
         লোকেদের উদারতার উপর নির্ভর করি!
       </p>
-      {/* <div className="space-y-3 md:space-y-4">
-        {[
-          { color: "bg-blue-500", text: "Cutting-edge Research" },
-          { color: "bg-green-500", text: "User-Centric Design" },
-          { color: "bg-purple-500", text: "Innovative Solutions" },
-        ].map((item, index) => (
-          <div key={index} className="flex items-center space-x-3">
-            <div
-              className={`w-8 h-8 md:w-10 md:h-10 ${item.color} rounded-full flex items-center justify-center`}
-            >
-              <span className="text-white font-bold text-sm">{index + 1}</span>
-            </div>
-            <span className="text-gray-700 text-sm md:text-base">
-              {item.text}
-            </span>
-          </div>
-        ))}
-      </div> */}
-      <button className="flex items-center bg-black text-white  px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-yellow-300 transition-colors">
+      <button className="flex items-center bg-black text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-yellow-300 transition-colors">
         <Heart className="mr-2" /> Donate For Happier Childwhood
       </button>
     </div>

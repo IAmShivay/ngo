@@ -82,7 +82,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-gray-500" />
-                <span>Helpline: +91 81454 70663 / +91 80175 08002</span>
+                <span>Helpline: +91 8017508002 / +91 9832808213</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-gray-500" />
@@ -163,7 +163,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="border-t border-gray-700 pt-8 text-center">
           <p className="text-lg">
-            © 2024 All India SC/ST/OBC Minority Joint Forum
+            © 2024 AKHAND BHARAT SC/ST/OBC/ MINORITY JOINT FORUM
           </p>
           <p className="text-sm text-gray-500 mt-2">All Rights Reserved</p>
         </div>

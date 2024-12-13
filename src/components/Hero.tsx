@@ -1,6 +1,6 @@
 import { Heart } from "lucide-react";
 import React from "react";
-
+import main from "../assets/main.jpg";
 const Hero = () => {
   return (
     <div className="relative min-h-[70vh] bg-[#0A0A0A] overflow-hidden">
@@ -15,13 +15,14 @@ const Hero = () => {
                 ( আখন্দ ভারত এসসি/এসটি/ওবিসি/সংখ্যালঘু জয়েন্ট ফোরাম ){" "}
               </p>
               <div className="flex justify-center lg:justify-start gap-4">
-                <button className="flex items-center bg-white text-black px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-yellow-300 transition-colors">
+                {/* <button className="flex items-center bg-white text-black px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-yellow-300 transition-colors">
                   <Heart className="mr-2" /> Yes I Want To Help
-                </button>
-
-                <button className="hidden md:block border-2 border-white text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-white/10 transition-colors">
-                  Learn More
-                </button>
+                </button> */}
+                <a href="/about">
+                  <button className="hidden md:block border-2 border-white text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-white/10 transition-colors">
+                    Learn More
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -37,7 +38,7 @@ const Hero = () => {
                   <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white/30 translate-x-1/2 translate-y-1/2"></div>
                 </div>
                 <img
-                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3"
+                  src={main}
                   alt="Children"
                   className="w-full h-full object-cover"
                 />

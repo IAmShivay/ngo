@@ -7,6 +7,7 @@ import UpcomingEvents from '../components/UpcomingEvents';
 import Gallery from './Gallery';
 import SliderPage from '../components/SliderComponents';
 import WhatWeDoSection from '../components/WhatWeDo';
+import ResponsiveComponent from '../components/image';
 
 export default function Home() {
   return (
@@ -16,7 +17,8 @@ export default function Home() {
       <WhatWeDoSection/>
       {/* <Founders /> */}
       <MissionVision />
-      <UpcomingEvents />
+      <ResponsiveComponent/>
+      {/* <UpcomingEvents /> */}
       {/* <Committee /> */}
       <Gallery/>
       <Quote />

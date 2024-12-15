@@ -20,8 +20,8 @@ export default function Home() {
       <ResponsiveComponent/>
       {/* <UpcomingEvents /> */}
       {/* <Committee /> */}
-      <Gallery/>
       <Quote />
+      <Gallery/>
     </>
   );
 }

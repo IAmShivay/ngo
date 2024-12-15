@@ -1,7 +1,7 @@
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import logo from "../assets/logo.jpg";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -24,7 +24,7 @@ export default function Header() {
             to="/"
             className="text-lg md:text-xl font-bold hover:text-gray-700 transition-colors flex items-center space-x-2"
           >
-            <span>AKHAND BHARAT SC/ST/OBC/ MINORITY JOINT FORUM</span>
+            <img src={logo} className="h-14 w-16" alt="" />{" "}
           </Link>
 
           <button

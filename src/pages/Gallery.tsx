@@ -26,8 +26,17 @@ import image15 from "../assets/gallery/15.jpg";
 import image16 from "../assets/gallery/16.jpg";
 import image17 from "../assets/gallery/17.jpg";
 import image18 from "../assets/gallery/18.jpg";
-import image19 from "../assets/gallery/19.jpg";
-
+import image21 from "../assets/gallery/21.jpg";
+import image22 from "../assets/gallery/22.jpg";
+import image23 from "../assets/gallery/23.jpg";
+import image24 from "../assets/gallery/24.jpg";
+import image25 from "../assets/gallery/25.jpg";
+import image26 from "../assets/gallery/26.jpg";
+import image27 from "../assets/gallery/27.jpg";
+import image28 from "../assets/gallery/28.jpg";
+import image29 from "../assets/gallery/29.jpg";
+import image30 from "../assets/gallery/30.jpg";
+import image31 from "../assets/gallery/31.jpg";
 interface GalleryImage {
   id: number;
   url: string;
@@ -75,14 +84,6 @@ const galleryImages: GalleryImage[] = [
   {
     id: 6,
     url: image7,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-
-  {
-    id: 8,
-    url: image9,
     title: "Tree Plantation Program",
     description: "Environmental Awareness Initiative",
     date: "June 5, 2023",
@@ -144,9 +145,76 @@ const galleryImages: GalleryImage[] = [
     description: "Environmental Awareness Initiative",
     date: "June 5, 2023",
   },
+
   {
-    id: 19,
-    url: image19,
+    id: 20,
+    url: image21,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 21,
+    url: image22,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 22,
+    url: image23,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 23,
+    url: image24,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 24,
+    url: image25,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 25,
+    url: image26,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },{
+    id: 26,
+    url: image27,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },{
+    id: 27,
+    url: image28,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },{
+    id: 28,
+    url: image29,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },{
+    id: 29,
+    url: image30,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 30,
+    url: image31,
     title: "Tree Plantation Program",
     description: "Environmental Awareness Initiative",
     date: "June 5, 2023",

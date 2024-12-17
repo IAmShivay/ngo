@@ -21,13 +21,13 @@ export default function Footer() {
     },
     {
       name: "Rahul Bouri",
-      title: "Honorary President Vice President",
+      title: "Honorary President",
       subtitle: "TMC SC/ST Cell Paschim Bardhaman",
       image: founder2,
     },
     {
       name: "Dablu Bauri",
-      title: "National Vice President",
+      title: "National Vice President ",
       subtitle: "Social worker & Ex. Chairman Chirkunda Nagar Nigam",
       image:
         "https://imgs.search.brave.com/oJUxonEvz7P_qkOC_-rYriP6a_qd9HESeJEXuACr75k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzk5LzczLzI2/LzM2MF9GXzI5OTcz/MjY2OF9nWnFLVmJ1/Mktqcm9MWXRUOWhS/WmZFMzdBWldGSEpR/bi5qcGc",
@@ -41,15 +41,29 @@ export default function Footer() {
     },
     {
       name: "Dara Bauri",
-      title: "National President Renowned Social Activist",
-      subtitle: "Mohila Morcha & Child cell Asansol Division",
+      title: "National President",
+      subtitle: "Renowned Social Activist",
       image:
         "https://imgs.search.brave.com/oJUxonEvz7P_qkOC_-rYriP6a_qd9HESeJEXuACr75k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzk5LzczLzI2/LzM2MF9GXzI5OTcz/MjY2OF9nWnFLVmJ1/Mktqcm9MWXRUOWhS/WmZFMzdBWldGSEpR/bi5qcGc",
     },
     {
-      name: "Satyajit Paramanik",
-      title: "President OBC Cell Asansol Division",
-      subtitle: "Mohila Morcha & Child cell Asansol Division",
+      name: "Sayed Iqbal Khan",
+      title: "State Minorty President",
+      subtitle: "",
+      image:
+        "https://imgs.search.brave.com/oJUxonEvz7P_qkOC_-rYriP6a_qd9HESeJEXuACr75k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzk5LzczLzI2/LzM2MF9GXzI5OTcz/MjY2OF9nWnFLVmJ1/Mktqcm9MWXRUOWhS/WmZFMzdBWldGSEpR/bi5qcGc",
+    },
+    {
+      name: "Mukesh Paswan",
+      title: "President ( SC )",
+      subtitle: "Asansol Division",
+      image:
+        "https://imgs.search.brave.com/oJUxonEvz7P_qkOC_-rYriP6a_qd9HESeJEXuACr75k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzk5LzczLzI2/LzM2MF9GXzI5OTcz/MjY2OF9nWnFLVmJ1/Mktqcm9MWXRUOWhS/WmZFMzdBWldGSEpR/bi5qcGc",
+    },
+    {
+      name: "Ranjan Kumar Singh",
+      title: "President ( OBC )",
+      subtitle: "Asansol Division",
       image:
         "https://imgs.search.brave.com/oJUxonEvz7P_qkOC_-rYriP6a_qd9HESeJEXuACr75k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzk5LzczLzI2/LzM2MF9GXzI5OTcz/MjY2OF9nWnFLVmJ1/Mktqcm9MWXRUOWhS/WmZFMzdBWldGSEpR/bi5qcGc",
     },
@@ -74,9 +88,12 @@ export default function Footer() {
                   className="rounded-full mx-auto mb-4 h-40 w-40 object-cover border-4 border-white/20"
                 />
                 <h4 className="font-semibold text-xl">{member.name}</h4>
-                <p className="text-gray-400 text-base">{member.title}</p>
+                <p className="text-white font-semibold text-base">
+                  {member.title}
+                </p>
                 {member.qualifications && (
-                  <p className="text-gray-500 text-sm italic">
+                  <p className="text-gray-white font-semibold text-sm italic">
+                    Serial entrepreneur <br />
                     {member.qualifications}
                   </p>
                 )}
@@ -90,7 +107,7 @@ export default function Footer() {
               <div key={index} className="text-center">
                 <h4 className="font-bold text-lg mb-2">{member.name}</h4>
                 <p className="text-gray-300 text-sm mb-1">{member.title}</p>
-                {/* <p className="text-gray-500 text-xs">{member.subtitle}</p> */}
+                <p className="text-gray-300 text-sm mb-1">{member.subtitle}</p>
               </div>
             ))}
           </div>
@@ -110,7 +127,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-gray-500" />
-                <span>contact@akhandbharat.org</span>
+                <span>contact@scstobcmf.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-gray-500" />

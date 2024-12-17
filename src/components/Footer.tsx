@@ -48,15 +48,22 @@ export default function Footer() {
     },
     {
       name: "Sayed Iqbal Khan",
-      title: "State Minorty President",
-      subtitle: "",
+      title: "President OBC Cell",
+      subtitle: "Asansol Division",
       image:
         "https://imgs.search.brave.com/oJUxonEvz7P_qkOC_-rYriP6a_qd9HESeJEXuACr75k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzk5LzczLzI2/LzM2MF9GXzI5OTcz/MjY2OF9nWnFLVmJ1/Mktqcm9MWXRUOWhS/WmZFMzdBWldGSEpR/bi5qcGc",
     },
     {
-      name: "Mukesh Paswan",
-      title: "President ( SC )",
+      name: "Satyajit Paramanik",
+      title: "President OBC Cell",
       subtitle: "Asansol Division",
+      image:
+        "https://imgs.search.brave.com/oJUxonEvz7P_qkOC_-rYriP6a_qd9HESeJEXuACr75k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzk5LzczLzI2/LzM2MF9GXzI5OTcz/MjY2OF9nWnFLVmJ1/Mktqcm9MWXRUOWhS/WmZFMzdBWldGSEpR/bi5qcGc",
+    },
+    {
+      name: "Sushanta Mandal",
+      title: "Counsilor",
+      subtitle: "Asansol MC",
       image:
         "https://imgs.search.brave.com/oJUxonEvz7P_qkOC_-rYriP6a_qd9HESeJEXuACr75k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzk5LzczLzI2/LzM2MF9GXzI5OTcz/MjY2OF9nWnFLVmJ1/Mktqcm9MWXRUOWhS/WmZFMzdBWldGSEpR/bi5qcGc",
     },
@@ -64,6 +71,13 @@ export default function Footer() {
       name: "Ranjan Kumar Singh",
       title: "President ( OBC )",
       subtitle: "Asansol Division",
+      image:
+        "https://imgs.search.brave.com/oJUxonEvz7P_qkOC_-rYriP6a_qd9HESeJEXuACr75k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzk5LzczLzI2/LzM2MF9GXzI5OTcz/MjY2OF9nWnFLVmJ1/Mktqcm9MWXRUOWhS/WmZFMzdBWldGSEpR/bi5qcGc",
+    },
+    {
+      name: "Sushanta Mandal",
+      title: "President ( OBC )",
+      subtitle: "Counsilor Asansol MC",
       image:
         "https://imgs.search.brave.com/oJUxonEvz7P_qkOC_-rYriP6a_qd9HESeJEXuACr75k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzk5LzczLzI2/LzM2MF9GXzI5OTcz/MjY2OF9nWnFLVmJ1/Mktqcm9MWXRUOWhS/WmZFMzdBWldGSEpR/bi5qcGc",
     },

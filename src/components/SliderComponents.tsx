@@ -15,6 +15,7 @@ interface Slide {
   id: number;
   title: string;
   description: string;
+  subtitle?: string;
   image: string;
 }
 
@@ -109,8 +110,11 @@ const ContentSlider: React.FC<ContentSliderProps> = ({
                   <h3 className="text-base md:text-xl font-semibold text-gray-800 mb-1 px-4">
                     {slide.title}
                   </h3>
-                  <p className="text-xs md:text-sm text-gray-600 px-4">
+                  <p className="text-xs md:text-sm text-gray-600 px-4  font-bold">
                     {slide.description}
+                  </p>
+                  <p className="text-xs md:text-sm text-gray-600 px-4">
+                    {slide.subtitle}
                   </p>
                 </div>
               </div>
@@ -129,48 +133,56 @@ const SliderPage: React.FC = () => {
     {
       id: 1,
       title: "Right to Free Legal Aid",
+      subtitle: "সমগ্র পশ্চিমবঙ্গ ও ঝাড়খণ্ডে আইনি সহায়তার উকিল বিনামূল্যে ।",
+
       description:
-        "Free legal aid advocates in entire West Bengal & Jharkhand for SC/ST/OBC/Minority " +
-        "সমগ্র পশ্চিমবঙ্গ ও ঝাড়খণ্ডে আইনি সহায়তার উকিল বিনামূল্যে ।",
+        "Free legal aid advocates in entire West Bengal & Jharkhand for SC/ST/OBC/Minority ",
       image: image1,
     },
     {
       id: 2,
       title: "Free Doctor Checkup",
-      description:
-        "Totally Free Doctor checkup in specified hospital for SC/ST/OBC Minority " +
+      subtitle:
         "SC/ST/OBC/Minority দের ক্ষেত্রে ডাক্তার চেক-আপ সম্পূর্ণ বিনামূল্যে নির্ধারিত হাসপাতালে ।",
+      description:
+        "Totally Free Doctor checkup in specified hospital for SC/ST/OBC Minority ",
+
       image: image2,
     },
     {
       id: 3,
       title: "Engineering Seats Free",
-      description:
-        "100 Engineering seats free for SC/ST/OBC Minority students ( West Bengal / Jharkhand) " +
+      subtitle:
         " SC/ST/OBC Minority দের ১০০ টা ইঞ্জিনিয়ারিং সিট ফ্রি (পশ্চিমবঙ্গ/ ঝাড়খণ্ড)",
+      description:
+        "100 Engineering seats free for SC/ST/OBC Minority students ( West Bengal / Jharkhand) ",
+
       image: image3,
     },
     {
       id: 4,
       title: "Scholarship Given",
-      description:
-        "1 lakh scholarship will be given to meritorious girls students in various fields for SC/ST/OBC/Minority students. " +
+      subtitle:
         " (SC/ST/OBC/Minority দের বছরে ১০০০০০ টাকা স্কলারশিপ বিভিন্ন শিক্ষা ক্ষেত্রে মেধাবী ছাত্রীদের দেওয়া হবে ।)",
+      description:
+        "1 lakh scholarship will be given to meritorious girls students in various fields for SC/ST/OBC/Minority students. ",
+
       image: image4,
     },
     {
       id: 5,
       title: "Two Offices",
       description:
-        "Two offices at Barakar and Durgapur for filling all forms of government projects. " +
+        "Two offices at Barakar and Durgapur for filling all forms of government projects. ",
+      subtitle:
         " (সরকারি প্রকল্পের সমস্ত ধরনের ফর্ম ফিলাপের জন্য দুটো অফিস বরাকর ও দুর্গাপুরে ।)",
       image: image8,
     },
     {
       id: 6,
       title: "Nursing Training",
-      description:
-        "Free Nursing training ( ayah ) to 100 SC/ST/OBC Women " +
+      description: "Free Nursing training ( ayah ) to 100 SC/ST/OBC Women ",
+      subtitle:
         " (১০০ টা SC/ST/OBC মহিলাকে  নার্সিং ট্রেনিং ( আয়া) বিনামূল্যে)",
       image: image7,
     },
@@ -178,7 +190,8 @@ const SliderPage: React.FC = () => {
       id: 7,
       title: "Job Opportunities",
       description:
-        "Job opportunities for 100 SC/ST/OBC boys as Ward Boy / Lab Technician etc. " +
+        "Job opportunities for 100 SC/ST/OBC boys as Ward Boy / Lab Technician etc. ",
+      subtitle:
         " (১০০ টা SC/ST/OBC ছেলেকে কাজের সুযোগ ওয়ার্ড বয় / লেব টেকনিশিয়ান ইত্যাদি ক্ষেত্রে।)",
       image: image6,
     },
@@ -186,16 +199,18 @@ const SliderPage: React.FC = () => {
       id: 8,
       title: "Income Facility",
       description:
-        "Income facility to 100 women by Akhand Bharat SC/ST/OBC Minority Joint Forum. " +
+        "Income facility to 100 women by Akhand Bharat SC/ST/OBC Minority Joint Forum. ",
+      subtitle:
         " (১০০ টি মহিলাকে Akhand Bharat SC/ST/OBC Minority Joint Forum পক্ষ থেকে রোজগার ব্যবস্থা।)",
       image: image5,
     },
     {
       id: 10,
       title: "Seat Reservation",
-      description:
-        "15% seat reservation for education in every school in West Bengal and Jharkhand. " +
+      subtitle:
         " (পশ্চিমবঙ্গ ও ঝাড়খণ্ডের প্রতিটি স্কুলে ১৫% সিট রিজার্ভেশন শিক্ষার জন্য ।)",
+      description:
+        "15% seat reservation for education in every school in West Bengal and Jharkhand. ",
       image: image9,
     },
   ];

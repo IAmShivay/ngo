@@ -34,20 +34,20 @@ export default function MissionVision() {
           style={{ marginBottom: "24px", fontSize: "16px", lineHeight: "1.5" }}
         >
           <p>
-            Empowering Marginalised Communities through Unity, Education, and
-            Economic Empowerment.
+            Empowering Marginalised Communities through Unity of Education ,
+            Economy , Health and Legal aid.
             <br />
-            (একতা, শিক্ষা এবং অর্থনৈতিক ক্ষমতায়নের মাধ্যমে প্রান্তিক জনগোষ্ঠীর
-            ক্ষমতায়ন)
+            (শিক্ষা, অর্থনীতি, স্বাস্থ্য এবং আইনি সহায়তার ঐক্যের মাধ্যমে
+            প্রান্তিক জনগোষ্ঠীর ক্ষমতায়ন।)
           </p>
 
-          <p className="pt-5">
+          {/* <p className="pt-5">
             To ensure that minorities get the benefits they are entitled to by
             the state and Central Government
             <br />
             (রাজ্য ও কেন্দ্রসরকারী কর্তৃক যে সুবিধা সংখ্যালঘুদের প্রাপ্য সেটা
             যাতে তারা সঠিক ভাবে পায় )
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

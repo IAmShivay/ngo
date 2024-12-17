@@ -4,6 +4,11 @@ import image1 from "../assets/1.jpg";
 import image2 from "../assets/2.jpg";
 import image3 from "../assets/3.jpg";
 import image4 from "../assets/4.jpg";
+import image5 from "../assets/9.jpg";
+import image6 from "../assets/6.jpg";
+import image7 from "../assets/gallery/19.jpg";
+import image8 from "../assets/8.jpg";
+import image9 from "../assets/10.jpg";
 
 // Slide interface
 interface Slide {
@@ -152,6 +157,46 @@ const SliderPage: React.FC = () => {
         "1 lakh scholarship will be given to meritorious girls students in various fields for SC/ST/OBC/Minority students. " +
         " (SC/ST/OBC/Minority দের বছরে ১০০০০০ টাকা স্কলারশিপ বিভিন্ন শিক্ষা ক্ষেত্রে মেধাবী ছাত্রীদের দেওয়া হবে ।)",
       image: image4,
+    },
+    {
+      id: 5,
+      title: "Two Offices",
+      description:
+        "Two offices at Barakar and Durgapur for filling all forms of government projects. " +
+        " (সরকারি প্রকল্পের সমস্ত ধরনের ফর্ম ফিলাপের জন্য দুটো অফিস বরাকর ও দুর্গাপুরে ।)",
+      image: image8,
+    },
+    {
+      id: 6,
+      title: "Free Coaching",
+      description:
+        "Free Nursing training ( ayah ) to 100 SC/ST/OBC Women " +
+        " (১০০ টা SC/ST/OBC মহিলাকে  নার্সিং ট্রেনিং ( আয়া) বিনামূল্যে)",
+      image: image7,
+    },
+    {
+      id: 7,
+      title: "Free Coaching",
+      description:
+        "Job opportunities for 100 SC/ST/OBC boys as Ward Boy / Lab Technician etc. " +
+        " (১০০ টা SC/ST/OBC ছেলেকে কাজের সুযোগ ওয়ার্ড বয় / লেব টেকনিশিয়ান ইত্যাদি ক্ষেত্রে।)",
+      image: image6,
+    },
+    {
+      id: 8,
+      title: "Income Facility",
+      description:
+        "Income facility to 100 women by Akhand Bharat SC/ST/OBC Minority Joint Forum. " +
+        " (১০০ টি মহিলাকে Akhand Bharat SC/ST/OBC Minority Joint Forum পক্ষ থেকে রোজগার ব্যবস্থা।)",
+      image: image5,
+    },
+    {
+      id: 10,
+      title: "Income Facility",
+      description:
+        "15% seat reservation for education in every school in West Bengal and Jharkhand. " +
+        " (পশ্চিমবঙ্গ ও ঝাড়খণ্ডের প্রতিটি স্কুলে ১৫% সিট রিজার্ভেশন শিক্ষার জন্য ।)",
+      image: image9,
     },
   ];
 

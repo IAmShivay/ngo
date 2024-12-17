@@ -86,6 +86,9 @@ const ContentSlider: React.FC<ContentSliderProps> = ({
               <p className="text-xs md:text-sm text-gray-600 px-4">
                 {slides[currentSlide].description}
               </p>
+              <p className="text-xs md:text-sm text-gray-600 px-4">
+                    {slides[currentSlide].subtitle}
+                  </p>
             </div>
           </div>
 

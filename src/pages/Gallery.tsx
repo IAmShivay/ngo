@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Camera } from "lucide-react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import womenday from "../assets/gallery/women.jpg";
 import image2 from "../assets/gallery/2.jpg";
@@ -14,6 +14,19 @@ import image3 from "../assets/gallery/3.jpg";
 import image4 from "../assets/gallery/4.jpg";
 import image5 from "../assets/gallery/5.jpg";
 import image6 from "../assets/gallery/6.jpg";
+import image7 from "../assets/gallery/7.jpg";
+import image8 from "../assets/gallery/8.jpg";
+import image9 from "../assets/gallery/9.jpg";
+import image10 from "../assets/gallery/10.jpg";
+import image11 from "../assets/gallery/11.jpg";
+import image12 from "../assets/gallery/12.jpg";
+import image13 from "../assets/gallery/13.jpg";
+import image14 from "../assets/gallery/14.jpg";
+import image15 from "../assets/gallery/15.jpg";
+import image16 from "../assets/gallery/16.jpg";
+import image17 from "../assets/gallery/17.jpg";
+import image18 from "../assets/gallery/18.jpg";
+import image19 from "../assets/gallery/19.jpg";
 
 interface GalleryImage {
   id: number;
@@ -61,11 +74,83 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 6,
-    url: image6,
+    url: image7,
     title: "Tree Plantation Program",
     description: "Environmental Awareness Initiative",
     date: "June 5, 2023",
-  }
+  },
+
+  {
+    id: 8,
+    url: image9,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+
+  {
+    id: 10,
+    url: image11,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 11,
+    url: image12,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 12,
+    url: image13,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 13,
+    url: image14,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 14,
+    url: image15,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 16,
+    url: image16,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 17,
+    url: image17,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 18,
+    url: image18,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
+  {
+    id: 19,
+    url: image19,
+    title: "Tree Plantation Program",
+    description: "Environmental Awareness Initiative",
+    date: "June 5, 2023",
+  },
 ];
 
 export default function GallerySlider() {
@@ -85,13 +170,14 @@ export default function GallerySlider() {
             spaceBetween={30}
             slidesPerView={1}
             navigation={{
-              prevEl: '.custom-prev-button',
-              nextEl: '.custom-next-button',
+              prevEl: ".custom-prev-button",
+              nextEl: ".custom-next-button",
             }}
-            pagination={{ 
+            pagination={{
               clickable: true,
-              bulletClass: 'inline-block w-3 h-3 rounded-full bg-white/50 mx-2 cursor-pointer transition-all duration-300',
-              bulletActiveClass: 'bg-white',
+              bulletClass:
+                "inline-block w-3 h-3 rounded-full bg-white/50 mx-2 cursor-pointer transition-all duration-300",
+              bulletActiveClass: "bg-white",
             }}
             autoplay={{
               delay: 3500,
@@ -111,7 +197,7 @@ export default function GallerySlider() {
           >
             {galleryImages.map((image) => (
               <SwiperSlide key={image.id}>
-                <div 
+                <div
                   className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 cursor-pointer"
                   onClick={() => setSelectedImage(image)}
                 >
@@ -121,12 +207,12 @@ export default function GallerySlider() {
                       alt={image.title}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                    {/* <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
                       <h3 className="text-white font-semibold text-lg">
                         {image.title}
                       </h3>
                       <p className="text-gray-200 text-sm">{image.date}</p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </SwiperSlide>
@@ -134,24 +220,46 @@ export default function GallerySlider() {
           </Swiper>
 
           {/* Custom Navigation Buttons */}
-          <div 
+          <div
             className="custom-prev-button absolute top-1/2 left-0 z-10 transform -translate-y-1/2 
             w-12 h-12 bg-black rounded-full flex items-center justify-center 
             cursor-pointer hover:bg-black transition-all duration-300 
             hover:scale-110"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </div>
-          <div 
+          <div
             className="custom-next-button absolute top-1/2 right-0 z-10 transform -translate-y-1/2 
             w-12 h-12 bg-black rounded-full flex items-center justify-center 
             cursor-pointer hover:bg-black transition-all duration-300 
             hover:scale-110"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </div>
         </div>
@@ -164,7 +272,7 @@ export default function GallerySlider() {
                 alt={selectedImage.title}
                 className="w-full h-96 object-cover"
               />
-              <div className="p-6">
+              {/* <div className="p-6">
                 <h3 className="text-2xl font-bold mb-2">
                   {selectedImage.title}
                 </h3>
@@ -172,7 +280,7 @@ export default function GallerySlider() {
                   {selectedImage.description}
                 </p>
                 <p className="text-gray-500 text-sm">{selectedImage.date}</p>
-              </div>
+              </div> */}
               <button
                 className="absolute top-4 right-4 text-white text-xl font-bold bg-black/50 w-10 h-10 rounded-full hover:bg-black/70 transition-colors"
                 onClick={() => setSelectedImage(null)}

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Heart } from "lucide-react";
 import image1 from "../assets/1.jpg";
 import image2 from "../assets/2.jpg";
 import image3 from "../assets/3.jpg";
@@ -43,17 +42,20 @@ const ContentSlider: React.FC<ContentSliderProps> = ({
 
       {/* Right Slider Section */}
       <div className="w-full md:w-[50vw] bg-inherit flex flex-col justify-center items-center relative px-6 py-6">
-        {/* Navigation Buttons on Center-Left */}
-        <div className="absolute left-2 top-1/2 transform -translate-y-1/2 flex flex-col items-center space-y-4">
+        {/* Navigation Buttons */}
+        <div>
+          {/* Previous Button (Left Side) */}
           <button
             onClick={handlePrevious}
-            className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
           >
             <ChevronLeft className="w-6 h-6 text-gray-700" />
           </button>
+
+          {/* Next Button (Right Side) */}
           <button
             onClick={handleNext}
-            className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
           >
             <ChevronRight className="w-6 h-6 text-gray-700" />
           </button>
@@ -131,7 +133,7 @@ const SliderPage: React.FC = () => {
       id: 2,
       title: "Free Doctor Checkup",
       description:
-        "Tottaly Free Doctor checkup in specified hospital for SC/ST/OBC Minority " +
+        "Totally Free Doctor checkup in specified hospital for SC/ST/OBC Minority " +
         "SC/ST/OBC/Minority দের ক্ষেত্রে ডাক্তার চেক-আপ সম্পূর্ণ বিনামূল্যে নির্ধারিত হাসপাতালে ।",
       image: image2,
     },
@@ -147,7 +149,7 @@ const SliderPage: React.FC = () => {
       id: 4,
       title: "Scholarship Given",
       description:
-        "1 lakh scholarship will be given to meritorious  girls students in various fields for SC/ST/OBC/Minority students. " +
+        "1 lakh scholarship will be given to meritorious girls students in various fields for SC/ST/OBC/Minority students. " +
         " (SC/ST/OBC/Minority দের বছরে ১০০০০০ টাকা স্কলারশিপ বিভিন্ন শিক্ষা ক্ষেত্রে মেধাবী ছাত্রীদের দেওয়া হবে ।)",
       image: image4,
     },
@@ -171,9 +173,6 @@ const SliderPage: React.FC = () => {
         ভাবে পাচ্ছে না । এই মানুষগুলো সংবিধানে যে ক্ষমতা রাখে সেটা তাদের অধিকার
         এবং আমাদের সংস্থা সেটা তাদের পাইয়ে দেওয়ার সম্পূর্ন চেষ্টা করবে।)
       </p>
-      {/* <button className="flex items-center bg-black text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-yellow-300 transition-colors">
-        <Heart className="mr-2" /> Donate For Happier Childwhood
-      </button> */}
     </div>
   );
 

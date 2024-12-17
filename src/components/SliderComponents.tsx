@@ -168,7 +168,7 @@ const SliderPage: React.FC = () => {
     },
     {
       id: 6,
-      title: "Free Coaching",
+      title: "Nursing Training",
       description:
         "Free Nursing training ( ayah ) to 100 SC/ST/OBC Women " +
         " (১০০ টা SC/ST/OBC মহিলাকে  নার্সিং ট্রেনিং ( আয়া) বিনামূল্যে)",
@@ -176,7 +176,7 @@ const SliderPage: React.FC = () => {
     },
     {
       id: 7,
-      title: "Free Coaching",
+      title: "Job Opportunities",
       description:
         "Job opportunities for 100 SC/ST/OBC boys as Ward Boy / Lab Technician etc. " +
         " (১০০ টা SC/ST/OBC ছেলেকে কাজের সুযোগ ওয়ার্ড বয় / লেব টেকনিশিয়ান ইত্যাদি ক্ষেত্রে।)",
@@ -192,7 +192,7 @@ const SliderPage: React.FC = () => {
     },
     {
       id: 10,
-      title: "Income Facility",
+      title: "Seat Reservation",
       description:
         "15% seat reservation for education in every school in West Bengal and Jharkhand. " +
         " (পশ্চিমবঙ্গ ও ঝাড়খণ্ডের প্রতিটি স্কুলে ১৫% সিট রিজার্ভেশন শিক্ষার জন্য ।)",

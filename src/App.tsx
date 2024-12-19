@@ -5,6 +5,7 @@ import About from './pages/About';
 import Gallery from './pages/Gallery';
 import Events from './pages/Events';
 import Contact from './pages/Contact';
+import Dashboard from './pages/dashboard/dashboard';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
           <Route path="gallery" element={<Gallery />} />
           <Route path="events" element={<Events />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="dashboard" element={<Dashboard />} />
+
         </Route>
       </Routes>
     </Router>

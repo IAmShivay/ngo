@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
-
+import axios from "axios";
 type FormData = {
   name: string;
-  address: string;
+  message: string;
   phoneNo: string;
 };
 
 export default function Contact() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    address: "",
+    message: "",
     phoneNo: "",
   });
 
@@ -21,23 +21,36 @@ export default function Contact() {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form Submitted:", formData);
-    setFormData({
-      name: "",
-      address: "",
-      phoneNo: "",
-    });
-  };
 
+    // The webhook URL as provided
+    const webhookURL =
+      "https://crm-sales-alpha.vercel.app/api/leads?action=getLeads&sourceId=c107a000-5808-4a8c-a1ef-1fc57ed63ab3&workspaceId=21";
+    try {
+      await axios.post(webhookURL, JSON.stringify(formData), {
+
+      });
+
+
+    } catch (error) {
+      console.log(error);
+      console.error("An error occurred while sending data to the webhook:", error);
+      alert("An error occurred. Please try again later.");
+    }
+  };
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         {/* Main Heading */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-extrabold text-black">
-            I want to be a member of <span className="underline decoration-gray-800">Akhand Bharat</span> SC/ST/OBC Minority Joint Forum
+            I want to be a member of{" "}
+            <span className="underline decoration-gray-800">
+              Akhand Bharat
+            </span>{" "}
+            SC/ST/OBC Minority Joint Forum
           </h1>
           <p className="text-xl text-gray-700 mt-4">
             আমি অখন্ড ভারত SC/ST/OBC সংখ্যালঘু জয়েন্ট ফোরামের সদস্য হতে চাই
@@ -104,12 +117,12 @@ export default function Contact() {
                 {/* Address Field */}
                 <div>
                   <label className="block text-sm font-medium text-gray-800 mb-1">
-                    Address
+                    Message
                   </label>
                   <textarea
-                    name="address"
+                    name="message"
                     rows={2}
-                    value={formData.address}
+                    value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500"
                   ></textarea>

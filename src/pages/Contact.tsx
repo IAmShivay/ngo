@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import axios from "axios";
+
 type FormData = {
   name: string;
+  email: string; // Added email field
   message: string;
   phoneNo: string;
 };
@@ -10,6 +12,7 @@ type FormData = {
 export default function Contact() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
+    email: "", // Initialize email
     message: "",
     phoneNo: "",
   });
@@ -25,25 +28,21 @@ export default function Contact() {
     e.preventDefault();
     console.log("Form Submitted:", formData);
 
-    // The webhook URL as provided
     const webhookURL =
       "https://crm-sales-alpha.vercel.app/api/leads?action=getLeads&sourceId=c107a000-5808-4a8c-a1ef-1fc57ed63ab3&workspaceId=21";
+
     try {
       await axios.post(webhookURL, JSON.stringify(formData), {
-
       });
-
-
     } catch (error) {
-      console.log(error);
       console.error("An error occurred while sending data to the webhook:", error);
       alert("An error occurred. Please try again later.");
     }
   };
+
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        {/* Main Heading */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-extrabold text-black">
             I want to be a member of{" "}
@@ -63,7 +62,6 @@ export default function Contact() {
               <h2 className="text-2xl font-semibold mb-6 text-black">
                 Our Address
               </h2>
-
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
                   <Phone className="w-6 h-6 text-black" />
@@ -74,7 +72,6 @@ export default function Contact() {
                     <p className="text-gray-700">8145470663 / 8017508002</p>
                   </div>
                 </div>
-
                 <div className="flex items-center space-x-4">
                   <MapPin className="w-6 h-6 text-black" />
                   <div>
@@ -83,7 +80,6 @@ export default function Contact() {
                     <p className="text-gray-700">West Burdwan</p>
                   </div>
                 </div>
-
                 <div className="flex items-center space-x-4">
                   <Mail className="w-6 h-6 text-black" />
                   <div>
@@ -100,7 +96,6 @@ export default function Contact() {
               </h2>
 
               <form className="space-y-4" onSubmit={handleSubmit}>
-                {/* Name Field */}
                 <div>
                   <label className="block text-sm font-medium text-gray-800 mb-1">
                     Your Name
@@ -114,7 +109,19 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* Address Field */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-800 mb-1">
+                    Your Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gray-500"
+                  />
+                </div>
+
                 <div>
                   <label className="block text-sm font-medium text-gray-800 mb-1">
                     Message
@@ -128,7 +135,6 @@ export default function Contact() {
                   ></textarea>
                 </div>
 
-                {/* Phone Number Field */}
                 <div>
                   <label className="block text-sm font-medium text-gray-800 mb-1">
                     Phone Number
@@ -142,7 +148,6 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   className="w-full bg-gray-800 text-white py-3 rounded-lg hover:bg-gray-900 transition-colors font-medium"

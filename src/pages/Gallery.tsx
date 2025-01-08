@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { Camera } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
 import womenday from "../assets/gallery/women.jpg";
 import image2 from "../assets/gallery/2.jpg";
 import image3 from "../assets/gallery/3.jpg";

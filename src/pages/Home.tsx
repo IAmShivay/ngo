@@ -30,11 +30,8 @@ export default function Home() {
       <Hero />
       <SliderPage />
       <WhatWeDoSection />
-      {/* <Founders /> */}
       <MissionVision />
       <ResponsiveComponent />
-      {/* <UpcomingEvents /> */}
-      {/* <Committee /> */}
       <Quote />
       <Gallery />
       <VideoSlider videos={videos} />

@@ -18,7 +18,6 @@ function App() {
           <Route path="events" element={<Events />} />
           <Route path="contact" element={<Contact />} />
           <Route path="dashboard" element={<Dashboard />} />
-
         </Route>
       </Routes>
     </Router>

@@ -94,8 +94,8 @@ const UpdateGallery: React.FC = () => {
                     <div className="space-x-4">
                         <button
                             className={`px-4 py-2 rounded-lg shadow-md text-white ${viewMode === "grid"
-                                    ? "bg-blue-600 hover:bg-blue-700"
-                                    : "bg-gray-300 hover:bg-gray-400"
+                                ? "bg-blue-600 hover:bg-blue-700"
+                                : "bg-gray-300 hover:bg-gray-400"
                                 }`}
                             onClick={() => setViewMode("grid")}
                         >
@@ -103,8 +103,8 @@ const UpdateGallery: React.FC = () => {
                         </button>
                         <button
                             className={`px-4 py-2 rounded-lg shadow-md text-white ${viewMode === "table"
-                                    ? "bg-blue-600 hover:bg-blue-700"
-                                    : "bg-gray-300 hover:bg-gray-400"
+                                ? "bg-blue-600 hover:bg-blue-700"
+                                : "bg-gray-300 hover:bg-gray-400"
                                 }`}
                             onClick={() => setViewMode("table")}
                         >

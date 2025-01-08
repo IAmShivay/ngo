@@ -9,6 +9,7 @@ import {
   Bell,
   Search,
 } from "lucide-react";
+import UpdateGallery from "./updateGallery";
 
 // Enhanced Components for each section with better visual structure
 const UpdateHeader = () => (
@@ -55,16 +56,6 @@ const UpdateVideo = () => (
   </div>
 );
 
-const UpdateGallery = () => (
-  <div className="bg-white rounded-lg shadow-sm p-8">
-    <h2 className="text-xl font-semibold mb-6">Gallery Management</h2>
-    <div className="space-y-4">
-      <div className="p-4 border rounded-md bg-gray-50">
-        Content coming soon...
-      </div>
-    </div>
-  </div>
-);
 
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState("header");

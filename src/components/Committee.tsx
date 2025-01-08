@@ -5,7 +5,7 @@ interface MemberProps {
   image?: string;
 }
 
-function CommitteeMember({ name, position, contact, image }: MemberProps) {
+function CommitteeMember({ name, position, contact }: MemberProps) {
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 hover:shadow-xl">
       <div className="h-48 bg-gradient-to-r from-blue-500 to-indigo-600"></div>

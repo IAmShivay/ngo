@@ -10,6 +10,7 @@ import {
   Search,
 } from "lucide-react";
 import UpdateGallery from "./updateGallery";
+import UpdateVideo from "./UpdateVideo";
 
 // Enhanced Components for each section with better visual structure
 const UpdateHeader = () => (
@@ -45,16 +46,16 @@ const UpdateFooter = () => (
   </div>
 );
 
-const UpdateVideo = () => (
-  <div className="bg-white rounded-lg shadow-sm p-8">
-    <h2 className="text-xl font-semibold mb-6">Video Management</h2>
-    <div className="space-y-4">
-      <div className="p-4 border rounded-md bg-gray-50">
-        Content coming soon...
-      </div>
-    </div>
-  </div>
-);
+// const UpdateVideo = () => (
+//   <div className="bg-white rounded-lg shadow-sm p-8">
+//     <h2 className="text-xl font-semibold mb-6">Video Management</h2>
+//     <div className="space-y-4">
+//       <div className="p-4 border rounded-md bg-gray-50">
+//         Content coming soon...
+//       </div>
+//     </div>
+//   </div>
+// );
 
 
 const Dashboard = () => {
@@ -63,7 +64,6 @@ const Dashboard = () => {
   const options = [
     { id: "header", label: "Update Header", icon: LayoutDashboard },
     { id: "navbar", label: "Update Navbar", icon: Navigation },
-    // { id: "footer", label: "Update Footer", icon: Footer },
     { id: "video", label: "Update Video", icon: Video },
     { id: "gallery", label: "Update Gallery", icon: Image },
   ];
@@ -163,14 +163,14 @@ const Dashboard = () => {
 
         {/* Page Content */}
         <div className="flex-1 p-8">
-          <div className="mb-8">
+          {/* <div className="mb-8">
             <h1 className="text-2xl font-semibold text-gray-800">
               {options.find((option) => option.id === activeComponent)?.label}
             </h1>
             <p className="text-gray-500 mt-1">
               Manage your website's {activeComponent} content and settings
             </p>
-          </div>
+          </div> */}
 
           {renderComponent()}
         </div>

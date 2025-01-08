@@ -46,18 +46,6 @@ const UpdateFooter = () => (
   </div>
 );
 
-// const UpdateVideo = () => (
-//   <div className="bg-white rounded-lg shadow-sm p-8">
-//     <h2 className="text-xl font-semibold mb-6">Video Management</h2>
-//     <div className="space-y-4">
-//       <div className="p-4 border rounded-md bg-gray-50">
-//         Content coming soon...
-//       </div>
-//     </div>
-//   </div>
-// );
-
-
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState("header");
 
@@ -109,10 +97,9 @@ const Dashboard = () => {
                   <button
                     onClick={() => setActiveComponent(option.id)}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-sm
-                      ${
-                        activeComponent === option.id
-                          ? "bg-blue-800/50 text-white font-medium shadow-lg"
-                          : "text-blue-100 hover:bg-blue-800/30"
+                      ${activeComponent === option.id
+                        ? "bg-blue-800/50 text-white font-medium shadow-lg"
+                        : "text-blue-100 hover:bg-blue-800/30"
                       }`}
                   >
                     <Icon size={18} />

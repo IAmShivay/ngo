@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "node --watch src/index.js",
     "start": "node src/index.js",
-    "test": "vitest"
+    "test": "vitest",
+    "build": "babel src --out-dir dist --presets @babel/preset-env"
   },
   "dependencies": {
     "express": "^4.18.2",

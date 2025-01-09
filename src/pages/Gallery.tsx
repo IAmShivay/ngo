@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Camera } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -6,31 +6,8 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import womenday from "../assets/gallery/women.jpg";
-import image2 from "../assets/gallery/2.jpg";
-import image3 from "../assets/gallery/3.jpg";
-import image4 from "../assets/gallery/4.jpg";
-import image5 from "../assets/gallery/5.jpg";
-import image7 from "../assets/gallery/7.jpg";
-import image11 from "../assets/gallery/11.jpg";
-import image12 from "../assets/gallery/12.jpg";
-import image13 from "../assets/gallery/13.jpg";
-import image14 from "../assets/gallery/14.jpg";
-import image15 from "../assets/gallery/15.jpg";
-import image16 from "../assets/gallery/16.jpg";
-import image17 from "../assets/gallery/17.jpg";
-import image18 from "../assets/gallery/18.jpg";
-import image21 from "../assets/gallery/21.jpg";
-import image22 from "../assets/gallery/22.jpg";
-import image23 from "../assets/gallery/23.jpg";
-import image24 from "../assets/gallery/24.jpg";
-import image25 from "../assets/gallery/25.jpg";
-import image26 from "../assets/gallery/26.jpg";
-import image27 from "../assets/gallery/27.jpg";
-import image28 from "../assets/gallery/28.jpg";
-import image29 from "../assets/gallery/29.jpg";
-import image30 from "../assets/gallery/30.jpg";
-import image31 from "../assets/gallery/31.jpg";
+import axios from "axios";
+
 interface GalleryImage {
   id: number;
   url: string;
@@ -39,184 +16,34 @@ interface GalleryImage {
   date: string;
 }
 
-const galleryImages: GalleryImage[] = [
-  {
-    id: 1,
-    url: womenday,
-    title: "Women's Day Celebration",
-    description: "Empowering",
-    date: "March 08, 2024",
-  },
-  {
-    id: 2,
-    url: image2,
-    title: "Education Support Program",
-    description: "Distribution of Educational Materials to Students",
-    date: "November 20, 2023",
-  },
-  {
-    id: 3,
-    url: image3,
-    title: "Social Awareness Workshop",
-    description: "Interaction with Youth Society",
-    date: "October 5, 2023",
-  },
-  {
-    id: 4,
-    url: image4,
-    title: "Cultural Event",
-    description: "Traditional Cultural Performance",
-    date: "September 25, 2023",
-  },
-  {
-    id: 5,
-    url: image5,
-    title: "Health Camp",
-    description: "Free Health Checkup Camp",
-    date: "August 10, 2023",
-  },
-  {
-    id: 6,
-    url: image7,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-
-  {
-    id: 10,
-    url: image11,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 11,
-    url: image12,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 12,
-    url: image13,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 13,
-    url: image14,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 14,
-    url: image15,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 16,
-    url: image16,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 17,
-    url: image17,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 18,
-    url: image18,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-
-  {
-    id: 20,
-    url: image21,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 21,
-    url: image22,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 22,
-    url: image23,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 23,
-    url: image24,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 24,
-    url: image25,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 25,
-    url: image26,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  }, {
-    id: 26,
-    url: image27,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  }, {
-    id: 27,
-    url: image28,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  }, {
-    id: 28,
-    url: image29,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  }, {
-    id: 29,
-    url: image30,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-  {
-    id: 30,
-    url: image31,
-    title: "Tree Plantation Program",
-    description: "Environmental Awareness Initiative",
-    date: "June 5, 2023",
-  },
-];
-
 export default function GallerySlider() {
+  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+
+  useEffect(() => {
+    // Fetch images from the API when the component mounts
+    const fetchImages = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/content/images");
+        const images = response.data.images;
+
+        // Format the images according to the required structure
+        const formattedImages = images.map((image: { url: string; title?: string; description?: string; date?: string }, index: number) => ({
+          id: index + 1,  // Assuming the images have no specific id; you can adjust this logic
+          url: image.url,
+          title: image.title || `Image ${index + 1}`,
+          description: image.description || "No description available",
+          date: image.date || "N/A",
+        }));
+
+        setGalleryImages(formattedImages);
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+
+    fetchImages();
+  }, []); // Empty dependency array means it runs only once when the component mounts
 
   return (
     <div className="py-16 bg-gray-50">
@@ -269,12 +96,6 @@ export default function GallerySlider() {
                       alt={image.title}
                       className="w-full h-full object-cover"
                     />
-                    {/* <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                      <h3 className="text-white font-semibold text-lg">
-                        {image.title}
-                      </h3>
-                      <p className="text-gray-200 text-sm">{image.date}</p>
-                    </div> */}
                   </div>
                 </div>
               </SwiperSlide>
@@ -334,15 +155,6 @@ export default function GallerySlider() {
                 alt={selectedImage.title}
                 className="w-full h-96 object-cover"
               />
-              {/* <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2">
-                  {selectedImage.title}
-                </h3>
-                <p className="text-gray-600 mb-2">
-                  {selectedImage.description}
-                </p>
-                <p className="text-gray-500 text-sm">{selectedImage.date}</p>
-              </div> */}
               <button
                 className="absolute top-4 right-4 text-white text-xl font-bold bg-black/50 w-10 h-10 rounded-full hover:bg-black/70 transition-colors"
                 onClick={() => setSelectedImage(null)}

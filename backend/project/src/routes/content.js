@@ -187,6 +187,23 @@ router.put('/:id', authenticate, contentValidation, async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+// Get all images
+router.get('/images', async (req, res) => {
+  try {
+    // Fetch all content entries with images populated
+    const contentWithImages = await Content.find({ 'images.0': { $exists: true } }).select('images');
+    
+    if (!contentWithImages.length) {
+      return res.status(404).json({ error: 'No images found' });
+    }
+
+    // Extract images from content and return
+    const allImages = contentWithImages.flatMap(content => content.images);
+    res.json({ images: allImages });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 // Delete content
 router.delete('/:id', authenticate, async (req, res) => {

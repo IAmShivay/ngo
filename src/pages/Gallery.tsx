@@ -63,12 +63,12 @@ export default function GallerySlider() {
               prevEl: ".custom-prev-button",
               nextEl: ".custom-next-button",
             }}
-            pagination={{
-              clickable: true,
-              bulletClass:
-                "inline-block w-3 h-3 rounded-full bg-white/50 mx-2 cursor-pointer transition-all duration-300",
-              bulletActiveClass: "bg-white",
-            }}
+            // pagination={{
+            //   clickable: true,
+            //   bulletClass:
+            //     "inline-block w-3 h-3 rounded-full bg-white/50 mx-2 cursor-pointer transition-all duration-300",
+            //   bulletActiveClass: "bg-white",
+            // }}
             autoplay={{
               delay: 3500,
               disableOnInteraction: false,

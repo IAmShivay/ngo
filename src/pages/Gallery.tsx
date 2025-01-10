@@ -39,6 +39,7 @@ export default function GallerySlider() {
         setGalleryImages(formattedImages);
       } catch (error) {
         console.error("Error fetching images:", error);
+        alert("Error fetching images:");
       }
     };
 

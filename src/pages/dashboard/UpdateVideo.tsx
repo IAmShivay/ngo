@@ -19,7 +19,7 @@ const UpdateVideo: React.FC = () => {
   // Fetch videos from API when component mounts
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/content/videos")
+      .get("https://ngo-6j8s.onrender.com/api/content/videos")
       .then((response) => setVideos(response.data))
       .catch((error) => console.error("Error fetching videos:", error));
   }, []);
@@ -28,7 +28,7 @@ const UpdateVideo: React.FC = () => {
   const handleAddVideo = () => {
     if (newVideo.title && newVideo.link) {
       axios
-        .post("http://localhost:8080/api/content/addvideos", newVideo)
+        .post("https://ngo-6j8s.onrender.com/api/content/addvideos", newVideo)
         .then((response) => {
           setVideos((prevVideos) => [...prevVideos, response.data]);
           setNewVideo({ title: "", link: "" });

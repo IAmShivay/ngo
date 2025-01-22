@@ -1,11 +1,11 @@
-import { Router } from 'express';
-import { body } from 'express-validator';
-import multer from 'multer';
-import cloudinary from '../config/cloudinary.js';
-import { authenticate } from '../middleware/auth.js';
-import { validate } from '../middleware/validate.js';
-import Content from '../models/Content.js';
-
+import { Router } from "express";
+import { body } from "express-validator";
+import multer from "multer";
+import cloudinary from "../config/cloudinary.js";
+import { authenticate } from "../middleware/auth.js";
+import { validate } from "../middleware/validate.js";
+import Content from "../models/Content.js";
+import Video from "../models/video.js";
 const router = Router();
 
 // Configure multer for temporary storage
@@ -13,23 +13,23 @@ const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
     fileSize: 5 * 1024 * 1024, // 5MB limit
-    files: 10 // Maximum 10 files
-  }
+    files: 10, // Maximum 10 files
+  },
 });
 
 const contentValidation = [
-  body('title').trim().isLength({ min: 3 }).escape(),
-  body('description').trim().optional().escape(),
-  body('videoUrl').optional().isURL(),
-  validate
+  body("title").trim().isLength({ min: 3 }).escape(),
+  body("description").trim().optional().escape(),
+  body("videoUrl").optional().isURL(),
+  validate,
 ];
 
 // Get all content
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const content = await Content.find()
-      .sort('-createdAt')
-      .populate('user', 'email');
+      .sort("-createdAt")
+      .populate("user", "email");
     res.json(content);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -37,14 +37,14 @@ router.get('/', async (req, res) => {
 });
 
 // Create content
-router.post('/', authenticate, contentValidation, async (req, res) => {
+router.post("/", authenticate, contentValidation, async (req, res) => {
   try {
     const { title, description, videoUrl } = req.body;
     const content = new Content({
       title,
       description,
       videoUrl,
-      user: req.user._id
+      user: req.user._id,
     });
     await content.save();
     res.status(201).json(content);
@@ -52,40 +52,42 @@ router.post('/', authenticate, contentValidation, async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-router.post('/bulk-upload', upload.array('images', 10), async (req, res) => {
+router.post("/bulk-upload", upload.array("images", 10), async (req, res) => {
   try {
     if (!req.files?.length) {
-      return res.status(400).json({ error: 'No images uploaded' });
+      return res.status(400).json({ error: "No images uploaded" });
     }
 
-    const uploadPromises = req.files.map(file => {
+    const uploadPromises = req.files.map((file) => {
       return new Promise((resolve, reject) => {
         // Add file size and type validation
-        if (file.size > 10 * 1024 * 1024) { // 10MB limit
-          reject(new Error('File too large'));
+        if (file.size > 10 * 1024 * 1024) {
+          // 10MB limit
+          reject(new Error("File too large"));
           return;
         }
 
-        if (!file.mimetype.startsWith('image/')) {
-          reject(new Error('Invalid file type'));
+        if (!file.mimetype.startsWith("image/")) {
+          reject(new Error("Invalid file type"));
           return;
         }
 
         const uploadStream = cloudinary.uploader.upload_stream(
           {
-            folder: 'content-uploads',
-            resource_type: 'auto',
+            folder: "content-uploads",
+            resource_type: "auto",
             timeout: 60000, // 60 seconds timeout
-            eager: [{ width: 800, height: 600, crop: 'fill' }] // Optional: Add transformations
+            eager: [{ width: 800, height: 600, crop: "fill" }], // Optional: Add transformations
           },
           (error, result) => {
             if (error) reject(error);
-            else resolve({
-              url: result.secure_url,
-              publicId: result.public_id,
-              width: result.width,
-              height: result.height
-            });
+            else
+              resolve({
+                url: result.secure_url,
+                publicId: result.public_id,
+                width: result.width,
+                height: result.height,
+              });
           }
         );
 
@@ -95,82 +97,89 @@ router.post('/bulk-upload', upload.array('images', 10), async (req, res) => {
 
     const imageUrls = await Promise.allSettled(uploadPromises);
     const successfulUploads = imageUrls
-      .filter(result => result.status === 'fulfilled')
-      .map(result => result.value);
+      .filter((result) => result.status === "fulfilled")
+      .map((result) => result.value);
 
     if (!successfulUploads.length) {
-      return res.status(500).json({ error: 'All uploads failed' });
+      return res.status(500).json({ error: "All uploads failed" });
     }
 
     const content = new Content({
       user: "ENJqLiuExNMoGXMvvzKmuLghsJCjYFscWUCvpkifyMnLFhcGfMdKyWvjaNdHBBoPjdzhZuNYiYiwNbh",
       title: req.body.title || `Upload ${new Date().toISOString()}`,
-      images: successfulUploads
+      images: successfulUploads,
     });
 
     await content.save();
     res.status(201).json({
       message: `Successfully uploaded ${successfulUploads.length} images`,
-      content
+      content,
     });
-
   } catch (error) {
-    console.error('Upload error:', error);
+    console.error("Upload error:", error);
     res.status(500).json({ error: error.message });
   }
 });
 // Add images to existing content
-router.post('/:id/images', authenticate, upload.array('images', 10), async (req, res) => {
-  try {
-    const content = await Content.findOne({
-      _id: req.params.id,
-      user: req.user._id
-    });
-
-    if (!content) {
-      return res.status(404).json({ error: 'Content not found or unauthorized' });
-    }
-
-    if (!req.files || req.files.length === 0) {
-      return res.status(400).json({ error: 'No images uploaded' });
-    }
-
-    // Upload new images to Cloudinary
-    const uploadPromises = req.files.map(file => {
-      return new Promise((resolve, reject) => {
-        const uploadStream = cloudinary.uploader.upload_stream(
-          {
-            folder: 'content-uploads',
-            resource_type: 'auto'
-          },
-          (error, result) => {
-            if (error) reject(error);
-            else resolve({
-              url: result.secure_url,
-              publicId: result.public_id
-            });
-          }
-        );
-
-        uploadStream.end(file.buffer);
+router.post(
+  "/:id/images",
+  authenticate,
+  upload.array("images", 10),
+  async (req, res) => {
+    try {
+      const content = await Content.findOne({
+        _id: req.params.id,
+        user: req.user._id,
       });
-    });
 
-    const newImages = await Promise.all(uploadPromises);
-    content.images = [...(content.images || []), ...newImages];
-    await content.save();
+      if (!content) {
+        return res
+          .status(404)
+          .json({ error: "Content not found or unauthorized" });
+      }
 
-    res.json({
-      message: 'Images added successfully',
-      content: content
-    });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+      if (!req.files || req.files.length === 0) {
+        return res.status(400).json({ error: "No images uploaded" });
+      }
+
+      // Upload new images to Cloudinary
+      const uploadPromises = req.files.map((file) => {
+        return new Promise((resolve, reject) => {
+          const uploadStream = cloudinary.uploader.upload_stream(
+            {
+              folder: "content-uploads",
+              resource_type: "auto",
+            },
+            (error, result) => {
+              if (error) reject(error);
+              else
+                resolve({
+                  url: result.secure_url,
+                  publicId: result.public_id,
+                });
+            }
+          );
+
+          uploadStream.end(file.buffer);
+        });
+      });
+
+      const newImages = await Promise.all(uploadPromises);
+      content.images = [...(content.images || []), ...newImages];
+      await content.save();
+
+      res.json({
+        message: "Images added successfully",
+        content: content,
+      });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   }
-});
+);
 
 // Update content
-router.put('/:id', authenticate, contentValidation, async (req, res) => {
+router.put("/:id", authenticate, contentValidation, async (req, res) => {
   try {
     const { title, description, videoUrl } = req.body;
     const content = await Content.findOneAndUpdate(
@@ -180,7 +189,9 @@ router.put('/:id', authenticate, contentValidation, async (req, res) => {
     );
 
     if (!content) {
-      return res.status(404).json({ error: 'Content not found or unauthorized' });
+      return res
+        .status(404)
+        .json({ error: "Content not found or unauthorized" });
     }
     res.json(content);
   } catch (error) {
@@ -188,38 +199,76 @@ router.put('/:id', authenticate, contentValidation, async (req, res) => {
   }
 });
 // Get all images
-router.get('/images', async (req, res) => {
+router.get("/images", async (req, res) => {
   try {
     // Fetch all content entries with images populated
-    const contentWithImages = await Content.find({ 'images.0': { $exists: true } }).select('images');
-    
+    const contentWithImages = await Content.find({
+      "images.0": { $exists: true },
+    }).select("images");
+
     if (!contentWithImages.length) {
-      return res.status(404).json({ error: 'No images found' });
+      return res.status(404).json({ error: "No images found" });
     }
 
     // Extract images from content and return
-    const allImages = contentWithImages.flatMap(content => content.images);
+    const allImages = contentWithImages.flatMap((content) => content.images);
     res.json({ images: allImages });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+router.post(
+  "/addvideos",
+  [
+    (body("title").trim().isLength({ min: 3 }).escape(),
+    body("link").isURL().withMessage("Must be a valid URL"),
+    validate),
+  ],
+  async (req, res) => {
+    try {
+      const { title, link } = req.body;
 
+      // Create a new video entry
+      const video = new Video({
+        title,
+        videoUrl: link,
+      });
+
+      await video.save();
+      res.status(201).json(video);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+);
+router.get("/videos", async (req, res) => {
+  try {
+    const videos = await Video.find().sort("-createdAt");
+    if (!videos.length) {
+      return res.status(404).json({ error: "No videos found" });
+    }
+    res.json(videos);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 // Delete content
-router.delete('/:id', authenticate, async (req, res) => {
+router.delete("/:id", authenticate, async (req, res) => {
   try {
     const content = await Content.findOne({
       _id: req.params.id,
-      user: req.user._id
+      user: req.user._id,
     });
 
     if (!content) {
-      return res.status(404).json({ error: 'Content not found or unauthorized' });
+      return res
+        .status(404)
+        .json({ error: "Content not found or unauthorized" });
     }
 
     // Delete images from Cloudinary
     if (content.images && content.images.length > 0) {
-      const deletePromises = content.images.map(image => 
+      const deletePromises = content.images.map((image) =>
         cloudinary.uploader.destroy(image.publicId)
       );
       await Promise.all(deletePromises);

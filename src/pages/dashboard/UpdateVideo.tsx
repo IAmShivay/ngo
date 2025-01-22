@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 type VideoData = {
   id: number;
@@ -15,15 +16,24 @@ const UpdateVideo: React.FC = () => {
   const [editVideo, setEditVideo] = useState<VideoData | null>(null);
   const [isTableView, setIsTableView] = useState<boolean>(true);
 
+  // Fetch videos from API when component mounts
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/content/videos")
+      .then((response) => setVideos(response.data))
+      .catch((error) => console.error("Error fetching videos:", error));
+  }, []);
+  console.log("Videos", videos)
   // Handle adding a new video
   const handleAddVideo = () => {
     if (newVideo.title && newVideo.link) {
-      const newVideoData = {
-        id: Date.now(),
-        ...newVideo,
-      };
-      setVideos((prevVideos) => [...prevVideos, newVideoData]);
-      setNewVideo({ title: "", link: "" });
+      axios
+        .post("http://localhost:8080/api/content/addvideos", newVideo)
+        .then((response) => {
+          setVideos((prevVideos) => [...prevVideos, response.data]);
+          setNewVideo({ title: "", link: "" });
+        })
+        .catch((error) => alert("Error adding video:", error));
     } else {
       alert("Please enter both title and link.");
     }
@@ -32,7 +42,12 @@ const UpdateVideo: React.FC = () => {
   // Handle deleting a video
   const handleRemoveVideo = (id: number) => {
     if (window.confirm("Are you sure you want to delete this video?")) {
-      setVideos((prevVideos) => prevVideos.filter((video) => video.id !== id));
+      axios
+        .delete(`http://localhost:5000/api/videos/${id}`)
+        .then(() => {
+          setVideos((prevVideos) => prevVideos.filter((video) => video.id !== id));
+        })
+        .catch((error) => alert("Error deleting video:", error));
     }
   };
 
@@ -44,12 +59,17 @@ const UpdateVideo: React.FC = () => {
   // Handle updating video after editing
   const handleUpdateVideo = () => {
     if (editVideo && editVideo.title && editVideo.link) {
-      setVideos((prevVideos) =>
-        prevVideos.map((video) =>
-          video.id === editVideo.id ? { ...editVideo } : video
-        )
-      );
-      setEditVideo(null); // Reset editing state
+      axios
+        .put(`http://localhost:5000/api/videos/${editVideo.id}`, editVideo)
+        .then(() => {
+          setVideos((prevVideos) =>
+            prevVideos.map((video) =>
+              video.id === editVideo.id ? { ...editVideo } : video
+            )
+          );
+          setEditVideo(null); // Reset editing state
+        })
+        .catch((error) => alert("Error updating video:", error));
     } else {
       alert("Please fill out both fields before updating.");
     }
@@ -99,9 +119,7 @@ const UpdateVideo: React.FC = () => {
             <input
               type="text"
               value={editVideo.title}
-              onChange={(e) =>
-                setEditVideo({ ...editVideo, title: e.target.value })
-              }
+              onChange={(e) => setEditVideo({ ...editVideo, title: e.target.value })}
               className="mt-2 w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -110,9 +128,7 @@ const UpdateVideo: React.FC = () => {
             <input
               type="text"
               value={editVideo.link}
-              onChange={(e) =>
-                setEditVideo({ ...editVideo, link: e.target.value })
-              }
+              onChange={(e) => setEditVideo({ ...editVideo, link: e.target.value })}
               className="mt-2 w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -130,22 +146,6 @@ const UpdateVideo: React.FC = () => {
           </button>
         </div>
       )}
-
-      {/* Toggle View Buttons */}
-      <div className="mb-6 flex justify-end">
-        <button
-          onClick={() => setIsTableView(true)}
-          className={`px-4 py-2 rounded-lg ${isTableView ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-600"} mr-2`}
-        >
-          Table View
-        </button>
-        <button
-          onClick={() => setIsTableView(false)}
-          className={`px-4 py-2 rounded-lg ${!isTableView ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-600"}`}
-        >
-          List View
-        </button>
-      </div>
 
       {/* Video List Section */}
       <div>

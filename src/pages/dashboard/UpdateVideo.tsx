@@ -33,7 +33,7 @@ const UpdateVideo: React.FC = () => {
           setVideos((prevVideos) => [...prevVideos, response.data]);
           setNewVideo({ title: "", link: "" });
         })
-        .catch((error) => alert("Error adding video:", error));
+        .catch((error) => alert(`Error adding video: ${error}`));
     } else {
       alert("Please enter both title and link.");
     }
@@ -47,7 +47,7 @@ const UpdateVideo: React.FC = () => {
         .then(() => {
           setVideos((prevVideos) => prevVideos.filter((video) => video.id !== id));
         })
-        .catch((error) => alert("Error deleting video:", error));
+        .catch((error) => alert(`Error deleting video: ${error}`));
     }
   };
 
@@ -69,7 +69,7 @@ const UpdateVideo: React.FC = () => {
           );
           setEditVideo(null); // Reset editing state
         })
-        .catch((error) => alert("Error updating video:", error));
+        .catch((error) => alert(`Error updating video: ${error}`));
     } else {
       alert("Please fill out both fields before updating.");
     }

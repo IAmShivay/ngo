@@ -24,7 +24,7 @@ export default function GallerySlider() {
     // Fetch images from the API when the component mounts
     const fetchImages = async () => {
       try {
-        const response = await axios.get("https://ngo-6j8s.onrender.com/api/content/images");
+        const response = await axios.get("https://collify.sanakamedical.com/api/content/images");
         const images = response.data.images;
 
         // Format the images according to the required structure

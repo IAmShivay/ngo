@@ -76,7 +76,7 @@ const UpdateGallery: React.FC = () => {
         });
 
         try {
-            const response = await fetch("https://ngo-6j8s.onrender.com/api/content/bulk-upload", {
+            const response = await fetch("https://collify.sanakamedical.com/api/content/bulk-upload", {
                 method: "POST",
                 body: formData,
             });

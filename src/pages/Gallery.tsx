@@ -34,7 +34,8 @@ export default function GallerySlider() {
           title: image.title || `Image ${index + 1}`,
           description: image.description || "No description available",
           date: image.date || "N/A",
-        }));
+        }))
+          .reverse();
 
         setGalleryImages(formattedImages);
       } catch (error) {

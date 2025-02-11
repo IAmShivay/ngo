@@ -1,12 +1,92 @@
-import React from "react";
-import main from "../assets/main.jpg";
-import backgroundImage from "../assets/gallery/2.jpg"; // You'll need to add this image
+import React, { useState, useEffect } from 'react';
 
-const Hero = () => {
+interface MediaData {
+  url: string;
+  type: 'image' | 'video';
+}
+
+interface ApiResponse {
+  success: boolean;
+  data: MediaData;
+  error?: string;
+}
+
+const Hero: React.FC = () => {
+  const [mediaData, setMediaData] = useState<MediaData | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchMedia = async () => {
+      try {
+        const response = await fetch('https://example.com/media');
+        const result: ApiResponse = await response.json();
+        
+        if (!result.success || !result.data) {
+          throw new Error(result.error || 'Failed to fetch media');
+        }
+
+        setMediaData(result.data);
+        setError(null);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An unknown error occurred');
+        console.error('Error fetching media:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchMedia();
+  }, []);
+
+  const renderMedia = (): React.ReactElement => {
+    if (isLoading) {
+      return (
+        <div className="w-full h-full flex items-center justify-center bg-gray-100">
+          <div className="animate-pulse w-16 h-16 rounded-full bg-gray-300" />
+        </div>
+      );
+    }
+
+    if (error || !mediaData) {
+      return (
+        <div className="w-full h-full flex items-center justify-center bg-gray-100">
+          <p className="text-red-500">Failed to load media</p>
+        </div>
+      );
+    }
+
+    if (mediaData.type === 'video') {
+      return (
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src={mediaData.url} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      );
+    }
+
+    return (
+      <img
+        src={mediaData.url}
+        alt="Hero media"
+        className="w-full h-full object-cover"
+        onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+          const target = e.target as HTMLImageElement;
+          target.onerror = null;
+          setError('Failed to load image');
+        }}
+      />
+    );
+  };
+
   return (
     <div className="relative min-h-[70vh] overflow-hidden bg-black">
-      {/* Background Image */}
-
       <div className="container mx-auto px-4 h-full relative z-10">
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[70vh] py-24 md:py-32">
           <div className="relative z-20 order-2 md:order-1 lg:order-1 space-y-8 lg:pr-12">
@@ -31,21 +111,13 @@ const Hero = () => {
             <div className="relative group w-full">
               <div className="absolute -inset-1 bg-gradient-to-br from-black/50 via-black/30 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-2xl"></div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 border-8 border-transparent">
-                 
-                </div>
-                <img
-                  src={main}
-                  alt="Children"
-                  className="w-full h-full object-cover"
-                />
+                <div className="absolute inset-0 border-8 border-transparent"></div>
+                {renderMedia()}
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* White Wave SVG */}
     </div>
   );
 };

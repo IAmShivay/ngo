@@ -11,19 +11,7 @@ import {
 } from "lucide-react";
 import UpdateGallery from "./updateGallery";
 import UpdateVideo from "./UpdateVideo";
-
-// Enhanced Components for each section with better visual structure
-const UpdateHeader = () => (
-  <div className="bg-white rounded-lg shadow-sm p-8">
-    <h2 className="text-xl font-semibold mb-6">Header Configuration</h2>
-    <div className="space-y-4">
-      <div className="p-4 border rounded-md bg-gray-50">
-        Content coming soon...
-      </div>
-    </div>
-  </div>
-);
-
+import UpdateMedia from "./updateHeader";
 const UpdateNavbar = () => (
   <div className="bg-white rounded-lg shadow-sm p-8">
     <h2 className="text-xl font-semibold mb-6">Navigation Settings</h2>
@@ -59,7 +47,7 @@ const Dashboard = () => {
   const renderComponent = () => {
     switch (activeComponent) {
       case "header":
-        return <UpdateHeader />;
+        return <UpdateMedia />;
       case "navbar":
         return <UpdateNavbar />;
       case "footer":

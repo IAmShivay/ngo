@@ -201,13 +201,21 @@ router.put("/:id", authenticate, contentValidation, async (req, res) => {
 // Get all images
 router.get("/images", async (req, res) => {
   try {
-    // Set cache headers
-    res.set('Cache-Control', 'public, max-age=300'); // Cache for 5 minutes
+    // Set headers for caching and security
+    res.set({
+      'Cache-Control': 'public, max-age=300', // Cache for 5 minutes
+      'Vary': 'Origin', // Vary response based on Origin header
+      'Content-Type': 'application/json',
+      'X-Content-Type-Options': 'nosniff'
+    });
     
     // Fetch all content entries with images populated
     const contentWithImages = await Content.find({
-      "images.0": { $exists: true },
-    }).select("images").lean();
+      "images.0": { $exists: true }
+    })
+    .select("images")
+    .lean()
+    .limit(100); // Limit the number of results for performance
 
     if (!contentWithImages || !contentWithImages.length) {
       return res.status(404).json({ 
@@ -219,6 +227,7 @@ router.get("/images", async (req, res) => {
 
     // Extract images from content and return
     const allImages = contentWithImages.flatMap((content) => content.images);
+    
     res.json({ 
       success: true,
       count: allImages.length,

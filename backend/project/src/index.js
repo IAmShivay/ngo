@@ -21,19 +21,41 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Security and optimization middleware
-app.use(helmet());
-
-// CORS configuration - Allow all origins
+// CORS configuration
 const corsOptions = {
-  origin: '*',
+  origin: function(origin, callback) {
+    const allowedOrigins = [
+      'https://www.scstobcmf.com',
+      'https://scstobcmf.com',
+      // Allow local development
+      'http://localhost:3000',
+      'http://localhost:8080'
+    ];
+    
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(null, false);
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With'],
   exposedHeaders: ['Content-Range', 'X-Content-Range'],
   credentials: true,
   maxAge: 86400 // 24 hours
 };
+
+// Apply CORS before other middleware
 app.use(cors(corsOptions));
+
+// Security middleware with appropriate settings for CORS
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" },
+  crossOriginOpenerPolicy: { policy: "same-origin-allow-popups" }
+}));
 
 app.use(compression());
 app.use(express.json({ limit: '50mb' }));

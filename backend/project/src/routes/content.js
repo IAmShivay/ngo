@@ -201,20 +201,36 @@ router.put("/:id", authenticate, contentValidation, async (req, res) => {
 // Get all images
 router.get("/images", async (req, res) => {
   try {
+    // Set cache headers
+    res.set('Cache-Control', 'public, max-age=300'); // Cache for 5 minutes
+    
     // Fetch all content entries with images populated
     const contentWithImages = await Content.find({
       "images.0": { $exists: true },
-    }).select("images");
+    }).select("images").lean();
 
-    if (!contentWithImages.length) {
-      return res.status(404).json({ error: "No images found" });
+    if (!contentWithImages || !contentWithImages.length) {
+      return res.status(404).json({ 
+        success: false,
+        error: "No images found",
+        message: "No images are currently available"
+      });
     }
 
     // Extract images from content and return
     const allImages = contentWithImages.flatMap((content) => content.images);
-    res.json({ images: allImages });
+    res.json({ 
+      success: true,
+      count: allImages.length,
+      images: allImages 
+    });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Error fetching images:', error);
+    res.status(500).json({ 
+      success: false,
+      error: "Internal server error",
+      message: "Failed to fetch images. Please try again later."
+    });
   }
 });
 router.post(

@@ -23,7 +23,18 @@ const PORT = process.env.PORT || 8080;
 
 // Security and optimization middleware
 app.use(helmet());
-app.use(cors());
+
+// CORS configuration - Allow all origins
+const corsOptions = {
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range'],
+  credentials: true,
+  maxAge: 86400 // 24 hours
+};
+app.use(cors(corsOptions));
+
 app.use(compression());
 app.use(express.json({ limit: '50mb' }));
 app.use(morgan('combined'));

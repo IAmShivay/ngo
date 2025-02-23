@@ -96,40 +96,7 @@ const VideoSlider: React.FC<VideoSliderProps> = ({ videos }) => {
         {/* Video Title */}
         <h2 className="text-lg font-semibold mt-4 mb-3 text-gray-800">
           {videos[activeIndex].title}
-        </h2>
-
-        {/* Thumbnails Carousel */}
-        <div className="relative mt-4">
-          <div className="overflow-x-auto scrollbar-hide">
-            <div className="flex gap-3 pb-2">
-              {videos.map((video, index) => (
-                <div
-                  key={index}
-                  onClick={() => handleThumbnailClick(index)}
-                  className={`flex-shrink-0 cursor-pointer transition-all duration-300 ${
-                    activeIndex === index
-                      ? 'ring-2 ring-blue-500 scale-105'
-                      : 'opacity-70 hover:opacity-100'
-                  }`}
-                >
-                  <div className="w-32 sm:w-40 md:w-48 relative group">
-                    <div className="relative w-full" style={{ paddingTop: '42.85%' }}> {/* Matching main video aspect ratio */}
-                      <img
-                        src={video.thumbnail || '/api/placeholder/320/180'}
-                        alt={video.title}
-                        className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
-                      />
-                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300 rounded-lg" />
-                    </div>
-                    <p className="mt-1 text-xs sm:text-sm font-medium line-clamp-1 px-1 text-gray-700">
-                      {video.title}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        </h2>        
       </div>
     </div>
   );

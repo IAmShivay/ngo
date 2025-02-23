@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 interface MediaData {
-  url: string;
-  contentType: 'image' | 'video';
+  _id?: string; // MongoDB ObjectId stored as a string
+  contentType: "image" | "video"; // Fixed string value for image type
+  url: string; // URL to the image
+  publicId: string; // Public identifier for the image
+  createdAt: string; // ISO date string
+  updatedAt: string; // ISO date string
 }
 
-interface ApiResponse {
-  success: boolean;
-  data: MediaData;
-  error?: string;
-}
 
 const Hero: React.FC = () => {
   const [mediaData, setMediaData] = useState<MediaData | null>(null);
@@ -19,14 +18,12 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const fetchMedia = async () => {
       try {
-        const response = await fetch('https://collify.sanakamedical.com/api/content/header');
-        const result: ApiResponse = await response.json();
-        
-        if (!result.success || !result.data) {
-          throw new Error(result.error || 'Failed to fetch media');
-        }
+        const response = await fetch('http://localhost:8080/api/content/header');
+        const result = await response.json();
+        console.log(result);
 
-        setMediaData(result.data);
+      
+        setMediaData(result);
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An unknown error occurred');
@@ -38,7 +35,7 @@ const Hero: React.FC = () => {
 
     fetchMedia();
   }, []);
-
+console.log(mediaData)
   const renderMedia = (): React.ReactElement => {
     if (isLoading) {
       return (

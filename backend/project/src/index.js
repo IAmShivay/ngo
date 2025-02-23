@@ -79,7 +79,7 @@ app.use(limiter);
 app.use('/api/content/header', headerRouter);
 
 // Protected routes (with authentication)
-app.use('/api/content', authenticate, contentRouter);
+app.use('/api/content', contentRouter);
 app.use('/api/profile', profileRouter);
 app.use('/api/contact', contactRouter);
 

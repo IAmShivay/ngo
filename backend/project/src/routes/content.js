@@ -41,7 +41,7 @@ router.get("/", async (req, res) => {
 });
 
 // Create content
-router.post("/", authenticate, contentValidation, async (req, res) => {
+router.post("/",  contentValidation, async (req, res) => {
   try {
     const { title, description, videoUrl } = req.body;
     const content = new Content({
@@ -129,7 +129,7 @@ router.post("/bulk-upload", upload.array("images", 10), async (req, res) => {
 // Add images to existing content
 router.post(
   "/:id/images",
-  authenticate,
+  
   upload.array("images", 10),
   async (req, res) => {
     try {
@@ -185,7 +185,7 @@ router.post(
 );
 
 // Update content
-router.put("/:id", authenticate, contentValidation, async (req, res) => {
+router.put("/:id",  contentValidation, async (req, res) => {
   try {
     const { title, description, videoUrl } = req.body;
     const content = await Content.findOneAndUpdate(
@@ -288,7 +288,7 @@ router.get("/videos", async (req, res) => {
 });
 
 // Delete content
-router.delete("/:id", authenticate, async (req, res) => {
+router.delete("/:id",  async (req, res) => {
   try {
     const content = await Content.findOne({
       _id: req.params.id,

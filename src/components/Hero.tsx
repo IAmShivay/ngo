@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const fetchMedia = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/content/header');
+        const response = await fetch('https://collify.sanakamedical.com/api/content/header');
         const result = await response.json();
         console.log(result);
 

@@ -6,7 +6,11 @@ import { authenticate } from "../middleware/auth.js";
 import { validate } from "../middleware/validate.js";
 import Content from "../models/Content.js";
 import Video from "../models/video.js";
+import Header from "../models/header.js";
+
+// Create separate routers
 const router = Router();
+const headerRouter = Router(); // Separate router for header routes
 
 // Configure multer for temporary storage
 const upload = multer({
@@ -52,6 +56,7 @@ router.post("/", authenticate, contentValidation, async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 router.post("/bulk-upload", upload.array("images", 10), async (req, res) => {
   try {
     if (!req.files?.length) {
@@ -120,6 +125,7 @@ router.post("/bulk-upload", upload.array("images", 10), async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 // Add images to existing content
 router.post(
   "/:id/images",
@@ -198,6 +204,7 @@ router.put("/:id", authenticate, contentValidation, async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 // Get all images
 router.get("/images", async (req, res) => {
   try {
@@ -242,6 +249,7 @@ router.get("/images", async (req, res) => {
     });
   }
 });
+
 router.post(
   "/addvideos",
   [
@@ -266,6 +274,7 @@ router.post(
     }
   }
 );
+
 router.get("/videos", async (req, res) => {
   try {
     const videos = await Video.find().sort("-createdAt");
@@ -277,6 +286,7 @@ router.get("/videos", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 // Delete content
 router.delete("/:id", authenticate, async (req, res) => {
   try {
@@ -306,4 +316,58 @@ router.delete("/:id", authenticate, async (req, res) => {
   }
 });
 
-export { router };
+// Header routes (without authentication)
+headerRouter.get("/", async (req, res) => {
+  try {
+    const header = await Header.findOne().sort("-createdAt");
+    res.json(header || {});
+  } catch (error) {
+    console.error("Error fetching header:", error);
+    res.status(500).json({ error: "Failed to fetch header content" });
+  }
+});
+
+headerRouter.put("/", upload.single("content"), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: "No file provided" });
+    }
+
+    // Convert buffer to base64
+    const fileBase64 = req.file.buffer.toString("base64");
+    const fileType = req.file.mimetype.startsWith("image/") ? "image" : "video";
+    
+    // Upload to Cloudinary
+    const uploadStr = `data:${req.file.mimetype};base64,${fileBase64}`;
+    const uploadOptions = {
+      resource_type: fileType,
+      folder: "header",
+    };
+
+    // Delete existing header content from Cloudinary if exists
+    const existingHeader = await Header.findOne();
+    if (existingHeader) {
+      await cloudinary.uploader.destroy(existingHeader.publicId);
+      await Header.deleteOne({ _id: existingHeader._id });
+    }
+
+    // Upload new content
+    const result = await cloudinary.uploader.upload(uploadStr, uploadOptions);
+
+    // Create new header document
+    const header = new Header({
+      contentType: fileType,
+      url: result.secure_url,
+      publicId: result.public_id,
+    });
+
+    await header.save();
+    res.json(header);
+  } catch (error) {
+    console.error("Error updating header:", error);
+    res.status(500).json({ error: "Failed to update header content" });
+  }
+});
+
+// Export both routers
+export { router, headerRouter };

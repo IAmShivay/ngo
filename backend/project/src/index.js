@@ -7,11 +7,12 @@ import morgan from 'morgan';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import connectDB from './config/db.js';
-import { router as contentRouter } from './routes/content.js';
+import { router as contentRouter, headerRouter } from './routes/content.js';
 import { router as authRouter } from './routes/auth.js';
 import { router as profileRouter } from './routes/profile.js';
 import { router as contactRouter } from './routes/contact.js';
 import { errorHandler } from './middleware/errorHandler.js';
+import { authenticate } from './middleware/auth.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -28,7 +29,7 @@ const corsOptions = {
       'https://www.scstobcmf.com',
       'https://scstobcmf.com',
       // Allow local development
-      'http://localhost:3000',
+      'http://localhost:5173',
       'http://localhost:8080'
     ];
     
@@ -72,8 +73,13 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Routes
-app.use('/api/auth', authRouter);
-app.use('/api/content', contentRouter);
+// app.use('/api/auth', authRouter);
+
+// Header routes (no authentication)
+app.use('/api/content/header', headerRouter);
+
+// Protected routes (with authentication)
+app.use('/api/content', authenticate, contentRouter);
 app.use('/api/profile', profileRouter);
 app.use('/api/contact', contactRouter);
 

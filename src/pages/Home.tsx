@@ -19,14 +19,14 @@ export default function Home() {
       try {
         const response = await fetch('https://collify.sanakamedical.com/api/content/videos');
         const data = await response.json();
-        
+
         // Transform the API data to match the VideoSlider component's expected format
-        const formattedVideos = data.map(video => ({
+        const formattedVideos = data.map((video: { title: any; videoUrl: string; }) => ({
           title: video.title,
           // Convert YouTube watch URLs to embed URLs
           link: video.videoUrl.replace('watch?v=', 'embed/')
         }));
-        
+
         setVideos(formattedVideos);
       } catch (error) {
         console.error('Error fetching videos:', error);

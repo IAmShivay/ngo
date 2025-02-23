@@ -21,7 +21,7 @@ const UpdateHeader = () => {
 
   const fetchHeaderContent = async () => {
     try {
-      const response = await axios.get<HeaderContent>('http://localhost:8080/api/content/header');
+      const response = await axios.get<HeaderContent>('https://collify.sanakamedical.com/api/content/header');
       if (response.data) {
         setHeaderContent(response.data);
         setPreviewUrl(response.data.url);
@@ -60,7 +60,7 @@ const UpdateHeader = () => {
 
     setLoading(true);
     try {
-      const response = await axios.put<HeaderContent>('http://localhost:8080/api/content/header', formData, {
+      const response = await axios.put<HeaderContent>('https://collify.sanakamedical.com/api/content/header', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

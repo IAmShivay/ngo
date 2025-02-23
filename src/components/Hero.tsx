@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 interface MediaData {
   url: string;
-  type: 'image' | 'video';
+  contentType: 'image' | 'video';
 }
 
 interface ApiResponse {
@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const fetchMedia = async () => {
       try {
-        const response = await fetch('https://example.com/media');
+        const response = await fetch('https://collify.sanakamedical.com/api/content/header');
         const result: ApiResponse = await response.json();
         
         if (!result.success || !result.data) {
@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
       );
     }
 
-    if (mediaData.type === 'video') {
+    if (mediaData?.contentType === 'video') {
       return (
         <video
           className="w-full h-full object-cover"

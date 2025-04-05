@@ -24,18 +24,19 @@ const PORT = process.env.PORT || 8080;
 
 // CORS configuration
 const corsOptions = {
-  origin: function(origin, callback) {
+  origin: function (origin, callback) {
     const allowedOrigins = [
       'https://www.scstobcmf.com',
       'https://scstobcmf.com',
+      'https://akhandbharatforum.com',
       // Allow local development
       'http://localhost:5173',
       'http://localhost:8080'
     ];
-    
+
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    
+
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {

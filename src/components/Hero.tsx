@@ -88,6 +88,12 @@ console.log(mediaData)
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[70vh] py-24 md:py-32">
           <div className="relative z-20 order-2 md:order-1 lg:order-1 space-y-8 lg:pr-12">
             <div className="rounded-2xl p-8">
+            <h3 className="text-4xl md:text-5xl font-bold  text-white leading-tight text-center lg:text-left">
+              PINKY FOUNDATION
+            </h3>
+            <h3 className="text-4xl md:text-5xl font-bold  text-white leading-tight ml-36 lg:text-left">
+              AND
+            </h3>
               <h3 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight text-center lg:text-left">
                 AKHAND BHARAT SC/ST/OBC/ MINORITY JOINT FORUM
               </h3>

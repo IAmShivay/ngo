@@ -9,6 +9,7 @@ import ResponsiveComponent from "../components/image";
 import VideoSlider from "./videoPlayer";
 import PatternedCTA from "./Cta";
 import { useNavigate } from "react-router-dom";
+// import Sites from "../components/siteview";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      {/* <Sites/> */}
       <SliderPage />
       <WhatWeDoSection />
       <MissionVision />

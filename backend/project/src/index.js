@@ -29,6 +29,8 @@ const corsOptions = {
       'https://www.scstobcmf.com',
       'https://scstobcmf.com',
       'https://akhandbharatforum.com',
+      'https://pinkyfoundation.com',
+'https://www.pinkyfoundation.com',
       // Allow local development
       'http://localhost:5173',
       'http://localhost:8080'

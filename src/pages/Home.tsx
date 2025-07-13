@@ -8,6 +8,7 @@ import WhatWeDoSection from "../components/WhatWeDo";
 import ResponsiveComponent from "../components/image";
 import VideoSlider from "./videoPlayer";
 import PatternedCTA from "./Cta";
+
 import { useNavigate } from "react-router-dom";
 // import Sites from "../components/siteview";
 
